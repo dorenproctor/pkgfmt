@@ -8,16 +8,16 @@ import (
 	"io/ioutil"
 )
 
-func GetPackage(filePath string) (Package, error) {
+func New(filePath string) (*Package, error) {
 	p := Package{}
 	if err := p.LoadBody(filePath); err != nil {
-		return p, err
+		return &p, err
 	}
 	if err := p.LoadAst(filePath); err != nil {
-		return p, err
+		return &p, err
 	}
 	p.LoadFns()
-	return p, nil
+	return &p, nil
 }
 
 func (p *Package) LoadBody(filePath string) error {
