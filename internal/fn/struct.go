@@ -5,10 +5,10 @@ import (
 )
 
 type Fn struct {
-	Name        string      `json:"name"`
-	Body        string      `json:"body"`
-	LPos        int         `json:"lpos"`
-	RPos        int         `json:"rpos"`
-	Imports     []impt.Impt `json:"imports"`
-	PackageName string      `json:"packagename"`
+	Name        string
+	Body        string
+	LPos        int
+	RPos        int
+	Imports     []impt.Impt
+	PackageName string
 }
