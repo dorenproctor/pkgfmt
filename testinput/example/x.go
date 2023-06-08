@@ -2,11 +2,12 @@ package example
 
 import (
 	"fmt"
+	str "strings"
 )
 
 var (
 	s string
-	t = "ttt"
+	t = fmt.Sprintf("%s %s", "", "")
 )
 
 const foo = "bar"
@@ -19,5 +20,5 @@ func x() {
 // yzzy man
 // what more is there to say?
 func yzzy(s string) string {
-	return s
+	return str.Replace(s, "yzzy", "", -1)
 }

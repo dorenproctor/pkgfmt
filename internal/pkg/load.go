@@ -32,28 +32,49 @@ func (p *Package) LoadAst(filePath string) error {
 
 func (p *Package) LoadFns() {
 	for _, decl := range p.Ast.Decls {
-		if fn, ok := decl.(*ast.FuncDecl); ok {
-			// for _, x := range fn.Doc.List {
-			// 	// fmt.Println(x.)
-			// }
-			lpos := int(fn.Pos() - 1)
-			if len(fn.Doc.List) > 0 {
-				lpos = int(fn.Doc.List[0].Pos() - 1)
+		if f, ok := decl.(*ast.FuncDecl); ok {
+			lpos := int(f.Pos() - 1)
+			if len(f.Doc.List) > 0 {
+				lpos = int(f.Doc.List[0].Pos() - 1)
 			}
-			rpos := int(fn.End())
+			rpos := int(f.End())
+			body := p.Body[lpos:rpos]
 			p.Fns = append(p.Fns, Fn{
-				Name: fn.Name.Name,
-				Body: p.Body[lpos:rpos],
-				LPos: lpos,
-				RPos: rpos,
+				Name:    f.Name.Name,
+				Body:    body,
+				LPos:    lpos,
+				RPos:    rpos,
+				pkg:     *p,
+				Imports: GetUsedImports(p.Imports, body),
 			})
 		}
 	}
 }
+
 func (p *Package) LoadImports() {
-	p.Imports = []string{}
+	p.Imports = []Import{}
 	for _, importSpec := range p.Ast.Imports {
-		s := strings.Trim(importSpec.Path.Value, "\"")
-		p.Imports = append(p.Imports, s)
+		i := Import{Name: importSpec.Path.Value}
+		i.NameWithQuotes = importSpec.Path.Value
+		i.Name = strings.Replace(importSpec.Path.Value, "\"", "", 2)
+		if importSpec.Name != nil {
+			i.Alias = importSpec.Name.Name
+		}
+		p.Imports = append(p.Imports, i)
 	}
 }
+
+// func (p *Package) LoadImports() {
+// 	p.Imports = []string{}
+// 	for _, importSpec := range p.Ast.Imports {
+// 		s := addQuotes(strings.Trim(importSpec.Path.Value, "\""))
+// 		if importSpec.Name != nil {
+// 			s = fmt.Sprintf("%s %s", importSpec.Name.Name, s)
+// 		}
+// 		p.Imports = append(p.Imports, s)
+// 	}
+// }
+
+// func addQuotes(s string) string {
+// 	return fmt.Sprintf("\"%s\"", s)
+// }

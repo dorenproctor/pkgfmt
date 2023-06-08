@@ -2,11 +2,12 @@ package example
 
 import (
 	"fmt"
+	str "strings"
 )
 
 var (
 	s string
-	t = "ttt"
+	t = fmt.Sprintf("%s %s", "", "")
 )
 
 const foo = "bar"

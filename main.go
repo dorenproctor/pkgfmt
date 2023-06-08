@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"pkgsplit/internal/pkg"
 )
 
@@ -10,7 +11,7 @@ func main() {
 	handleError(err)
 	handleError(p.WriteOutput())
 	// fmt.Println("updated files in ./output/example/")
-	// fmt.Println(p)
+	fmt.Println(p)
 }
 
 func handleError(err error) {
