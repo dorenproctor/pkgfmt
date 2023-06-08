@@ -10,8 +10,11 @@ func main() {
 	filePath := "testinput/example/x.go"
 	p, err := pkg.New(filePath)
 	handleError(err)
-	fmt.Println(p)
+	// fmt.Println(p)
 	handleError(p.WriteOutput())
+	// fmt.Println(p.Ast.Scope.String())
+	// fmt.Println(p.GetBodyWithoutFns())
+	fmt.Println("updated files in output/example")
 }
 
 func handleError(err error) {

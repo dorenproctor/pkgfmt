@@ -11,10 +11,4 @@ var (
 
 const foo = "bar"
 
-func x() {
-	fmt.Println(yzzy("x!"))
-}
 
-func yzzy(s string) string {
-	return s
-}
