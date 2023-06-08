@@ -12,6 +12,13 @@ var (
 
 const foo = "bar"
 
+type Person struct {
+	Name   string
+	secret string
+}
+
+type Asdf interface{}
+
 // Does X things
 func x() {
 	fmt.Println(yzzy(str.Trim("x!", "")))

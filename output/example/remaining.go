@@ -2,7 +2,6 @@ package example
 
 import (
 	"fmt"
-	str "strings"
 )
 
 var (
@@ -11,5 +10,12 @@ var (
 )
 
 const foo = "bar"
+
+type Person struct {
+	Name   string
+	secret string
+}
+
+type Asdf interface{}
 
 
