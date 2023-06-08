@@ -8,6 +8,7 @@ func New(filePath string) (*Package, error) {
 	if err := p.LoadAst(filePath); err != nil {
 		return &p, err
 	}
+	p.LoadImports()
 	p.LoadFns()
 	return &p, nil
 }

@@ -5,6 +5,7 @@ import (
 	"go/parser"
 	"go/token"
 	"io/ioutil"
+	"strings"
 )
 
 func (p *Package) LoadBody(filePath string) error {
@@ -32,12 +33,27 @@ func (p *Package) LoadAst(filePath string) error {
 func (p *Package) LoadFns() {
 	for _, decl := range p.Ast.Decls {
 		if fn, ok := decl.(*ast.FuncDecl); ok {
+			// for _, x := range fn.Doc.List {
+			// 	// fmt.Println(x.)
+			// }
+			lpos := int(fn.Pos() - 1)
+			if len(fn.Doc.List) > 0 {
+				lpos = int(fn.Doc.List[0].Pos() - 1)
+			}
+			rpos := int(fn.End())
 			p.Fns = append(p.Fns, Fn{
 				Name: fn.Name.Name,
-				Body: p.Body[fn.Pos()-1 : fn.End()],
-				LPos: int(fn.Pos() - 1),
-				RPos: int(fn.End()),
+				Body: p.Body[lpos:rpos],
+				LPos: lpos,
+				RPos: rpos,
 			})
 		}
+	}
+}
+func (p *Package) LoadImports() {
+	p.Imports = []string{}
+	for _, importSpec := range p.Ast.Imports {
+		s := strings.Trim(importSpec.Path.Value, "\"")
+		p.Imports = append(p.Imports, s)
 	}
 }
