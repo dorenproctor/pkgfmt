@@ -22,7 +22,7 @@ func (p *Pkg) WriteOutput() error {
 		}
 	}
 
-	filePath := fmt.Sprintf("%s/%s.go", outputDir, "remaining")
+	filePath := fmt.Sprintf("%s/%s.go", outputDir, p.Name)
 	// s := p.GetBodyWithoutFns()
 	s := p.GetRemainingBody()
 	return ioutil.WriteFile(filePath, []byte(s), 0644)
