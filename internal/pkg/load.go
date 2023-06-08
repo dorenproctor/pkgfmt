@@ -65,18 +65,3 @@ func (p *Pkg) LoadImports() {
 		p.Imports = append(p.Imports, i)
 	}
 }
-
-// func (p *Package) LoadImports() {
-// 	p.Imports = []string{}
-// 	for _, importSpec := range p.Ast.Imports {
-// 		s := addQuotes(strings.Trim(importSpec.Path.Value, "\""))
-// 		if importSpec.Name != nil {
-// 			s = fmt.Sprintf("%s %s", importSpec.Name.Name, s)
-// 		}
-// 		p.Imports = append(p.Imports, s)
-// 	}
-// }
-
-// func addQuotes(s string) string {
-// 	return fmt.Sprintf("\"%s\"", s)
-// }
