@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func (p *Package) WriteOutput() error {
+func (p *Pkg) WriteOutput() error {
 	outputDir := "output/" + p.Name
 	err := os.MkdirAll(outputDir, os.ModePerm)
 	if err != nil {

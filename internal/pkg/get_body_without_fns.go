@@ -1,6 +1,6 @@
 package pkg
 
-func (p *Package) GetBodyWithoutFns() string {
+func (p *Pkg) GetBodyWithoutFns() string {
 	s := p.Body
 	for i := len(p.Fns) - 1; i >= 0; i-- {
 		fn := p.Fns[i]

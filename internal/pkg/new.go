@@ -1,7 +1,7 @@
 package pkg
 
-func New(filePath string) (*Package, error) {
-	p := Package{}
+func New(filePath string) (*Pkg, error) {
+	p := Pkg{}
 	if err := p.LoadBody(filePath); err != nil {
 		return &p, err
 	}

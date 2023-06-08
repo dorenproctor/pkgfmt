@@ -1,13 +1,13 @@
-package pkg
+package fn
 
 import (
 	"fmt"
 )
 
-func (fn *Fn) GetFnFileOutput() string {
+func (f *Fn) GetFnFileOutput() string {
 	return fmt.Sprintf(`package %s
 
-%s`, fn.pkg.Name, fn.Body)
+%s`, f.PackageName, f.Body)
 }
 
 // func (fn *Fn) GetImportStr() string {

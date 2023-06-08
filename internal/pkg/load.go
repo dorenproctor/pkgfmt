@@ -5,10 +5,12 @@ import (
 	"go/parser"
 	"go/token"
 	"io/ioutil"
+	"pkgsplit/internal/fn"
+	"pkgsplit/internal/impt"
 	"strings"
 )
 
-func (p *Package) LoadBody(filePath string) error {
+func (p *Pkg) LoadBody(filePath string) error {
 	fileBytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		return err
@@ -17,7 +19,7 @@ func (p *Package) LoadBody(filePath string) error {
 	return nil
 }
 
-func (p *Package) LoadAst(filePath string) error {
+func (p *Pkg) LoadAst(filePath string) error {
 	fset := token.NewFileSet()
 	file, err := parser.ParseFile(fset, filePath, nil, parser.ParseComments)
 	if err != nil {
@@ -30,7 +32,7 @@ func (p *Package) LoadAst(filePath string) error {
 	return nil
 }
 
-func (p *Package) LoadFns() {
+func (p *Pkg) LoadFns() {
 	for _, decl := range p.Ast.Decls {
 		if f, ok := decl.(*ast.FuncDecl); ok {
 			lpos := int(f.Pos() - 1)
@@ -39,22 +41,22 @@ func (p *Package) LoadFns() {
 			}
 			rpos := int(f.End())
 			body := p.Body[lpos:rpos]
-			p.Fns = append(p.Fns, Fn{
-				Name:    f.Name.Name,
-				Body:    body,
-				LPos:    lpos,
-				RPos:    rpos,
-				pkg:     *p,
-				Imports: GetUsedImports(p.Imports, body),
+			p.Fns = append(p.Fns, fn.Fn{
+				Name:        f.Name.Name,
+				Body:        body,
+				LPos:        lpos,
+				RPos:        rpos,
+				PackageName: p.Name,
+				Imports:     impt.GetUsedImports(p.Imports, body),
 			})
 		}
 	}
 }
 
-func (p *Package) LoadImports() {
-	p.Imports = []Import{}
+func (p *Pkg) LoadImports() {
+	p.Imports = []impt.Impt{}
 	for _, importSpec := range p.Ast.Imports {
-		i := Import{Name: importSpec.Path.Value}
+		i := impt.Impt{Name: importSpec.Path.Value}
 		i.NameWithQuotes = importSpec.Path.Value
 		i.Name = strings.Replace(importSpec.Path.Value, "\"", "", 2)
 		if importSpec.Name != nil {
