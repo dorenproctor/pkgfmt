@@ -1,7 +1,7 @@
 package fn
 
 import (
-	"pkgsplit/internal/impt"
+	"pkgsplit/cmd/impt"
 )
 
 type Fn struct {

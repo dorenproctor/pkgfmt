@@ -5,8 +5,8 @@ import (
 	"go/parser"
 	"go/token"
 	"io/ioutil"
-	"pkgsplit/internal/fn"
-	"pkgsplit/internal/impt"
+	"pkgsplit/cmd/fn"
+	"pkgsplit/cmd/impt"
 	"strings"
 )
 

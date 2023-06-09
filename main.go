@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"pkgsplit/internal/pkg"
+	"pkgsplit/cmd/pkg"
 )
 
 func main() {

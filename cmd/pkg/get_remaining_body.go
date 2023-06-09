@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	"pkgsplit/internal/fn"
-	"pkgsplit/internal/impt"
+	"pkgsplit/cmd/fn"
+	"pkgsplit/cmd/impt"
 	"regexp"
 )
 

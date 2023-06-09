@@ -2,8 +2,8 @@ package pkg
 
 import (
 	"go/ast"
-	"pkgsplit/internal/fn"
-	"pkgsplit/internal/impt"
+	"pkgsplit/cmd/fn"
+	"pkgsplit/cmd/impt"
 )
 
 type Pkg struct {

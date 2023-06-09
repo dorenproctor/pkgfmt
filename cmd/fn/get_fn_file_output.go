@@ -2,7 +2,7 @@ package fn
 
 import (
 	"fmt"
-	"pkgsplit/internal/impt"
+	"pkgsplit/cmd/impt"
 )
 
 func (f *Fn) GetFnFileOutput() string {
