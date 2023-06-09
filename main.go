@@ -10,6 +10,7 @@ func main() {
 	p, err := pkg.New(filePath)
 	handleError(err)
 	handleError(p.WriteOutput())
+	// p.ExtractImports()
 	// fmt.Println("updated files in ./output/example/")
 	fmt.Println(p)
 }

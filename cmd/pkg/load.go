@@ -47,7 +47,7 @@ func (p *Pkg) LoadFns() {
 				LPos:        lpos,
 				RPos:        rpos,
 				PackageName: p.Name,
-				Imports:     impt.GetUsedImports(p.Imports, body),
+				Imports:     impt.GetUsedImportsFn(p.Imports, f),
 			})
 		}
 	}
