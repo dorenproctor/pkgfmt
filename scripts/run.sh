@@ -1,4 +1,4 @@
 set -e
 
 go build
-./pkgsplit
+./pkgsplit "$@"
