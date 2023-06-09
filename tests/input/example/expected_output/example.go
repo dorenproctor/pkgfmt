@@ -17,5 +17,3 @@ type Person struct {
 }
 
 type Asdf interface{}
-
-
