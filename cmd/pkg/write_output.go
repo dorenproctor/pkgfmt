@@ -6,11 +6,10 @@ import (
 	"os"
 	"path/filepath"
 	"pkgsplit/cmd/utils/fileutils"
+	"pkgsplit/cmd/utils/strutils"
 )
 
 func (p *Pkg) WriteOutput() error {
-	// outputDir := "output/" + p.Name
-	// outputDir := filepath.Dir(p.FilePath)
 	outputDir := fmt.Sprintf("%s/generated_pkgsplit", filepath.Dir(p.FilePath))
 	err := os.MkdirAll(outputDir, os.ModePerm)
 	if err != nil {
@@ -18,14 +17,14 @@ func (p *Pkg) WriteOutput() error {
 	}
 
 	for _, f := range p.Fns {
-		filePath := fmt.Sprintf("%s/%s.go", outputDir, f.Name)
+		filePath := fmt.Sprintf("%s/%s.go", outputDir, strutils.SnakeCase(f.Name))
 		fileutils.OutputGoFile(filePath, f.PackageName, f.Body, f.Imports)
 		if err != nil {
 			return err
 		}
 	}
 
-	filePath := fmt.Sprintf("%s/%s.go", outputDir, p.Name)
+	filePath := fmt.Sprintf("%s/%s.go", outputDir, strutils.SnakeCase(p.Name))
 	s, err := p.GetRemainingBody()
 	if err != nil {
 		return err
