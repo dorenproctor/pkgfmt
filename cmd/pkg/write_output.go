@@ -4,11 +4,14 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"pkgsplit/cmd/utils/fileutils"
 )
 
 func (p *Pkg) WriteOutput() error {
-	outputDir := "output/" + p.Name
+	// outputDir := "output/" + p.Name
+	// outputDir := filepath.Dir(p.FilePath)
+	outputDir := fmt.Sprintf("%s/generated_pkgsplit", filepath.Dir(p.FilePath))
 	err := os.MkdirAll(outputDir, os.ModePerm)
 	if err != nil {
 		return err

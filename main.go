@@ -9,9 +9,7 @@ func main() {
 	filePath := "testinput/example/x.go"
 	p, err := pkg.New(filePath)
 	handleError(err)
-	handleError(p.WriteOutput())
-	// p.ExtractImports()
-	// fmt.Println("updated files in ./output/example/")
+	// handleError(p.WriteOutput())
 	fmt.Println(p)
 }
 
