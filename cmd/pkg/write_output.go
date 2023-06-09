@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"pkgsplit/cmd/utils/fileutils"
 )
 
 func (p *Pkg) WriteOutput() error {
@@ -13,17 +14,15 @@ func (p *Pkg) WriteOutput() error {
 		return err
 	}
 
-	for _, fn := range p.Fns {
-		filePath := fmt.Sprintf("%s/%s.go", outputDir, fn.Name)
-		s := fn.GetFnFileOutput()
-		err := ioutil.WriteFile(filePath, []byte(s), 0644)
+	for _, f := range p.Fns {
+		filePath := fmt.Sprintf("%s/%s.go", outputDir, f.Name)
+		fileutils.OutputGoFile(filePath, f.PackageName, f.Body, f.Imports)
 		if err != nil {
 			return err
 		}
 	}
 
 	filePath := fmt.Sprintf("%s/%s.go", outputDir, p.Name)
-	// s := p.GetBodyWithoutFns()
 	s, err := p.GetRemainingBody()
 	if err != nil {
 		return err
