@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	filePath := "testinput/example/x.go"
+	filePath := "tests/input/example/x.go"
 	p, err := pkg.New(filePath)
 	handleError(err)
 	// handleError(p.WriteOutput())
