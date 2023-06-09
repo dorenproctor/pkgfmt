@@ -1,7 +1,7 @@
 package pkg
 
 func New(filePath string) (*Pkg, error) {
-	p := Pkg{}
+	p := Pkg{FilePath: filePath}
 	if err := p.LoadBody(filePath); err != nil {
 		return &p, err
 	}

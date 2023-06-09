@@ -7,9 +7,10 @@ import (
 )
 
 type Pkg struct {
-	Name    string
-	Fns     []fn.Fn
-	Body    string
-	Imports []impt.Impt
-	Ast     *ast.File `json:"-"`
+	Name     string
+	FilePath string
+	Body     string
+	Fns      []fn.Fn
+	Imports  []impt.Impt
+	Ast      *ast.File `json:"-"`
 }

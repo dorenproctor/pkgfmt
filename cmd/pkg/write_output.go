@@ -24,6 +24,9 @@ func (p *Pkg) WriteOutput() error {
 
 	filePath := fmt.Sprintf("%s/%s.go", outputDir, p.Name)
 	// s := p.GetBodyWithoutFns()
-	s := p.GetRemainingBody()
+	s, err := p.GetRemainingBody()
+	if err != nil {
+		return err
+	}
 	return ioutil.WriteFile(filePath, []byte(s), 0644)
 }

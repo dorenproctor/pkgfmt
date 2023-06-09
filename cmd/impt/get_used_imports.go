@@ -5,10 +5,10 @@ import (
 	"go/ast"
 )
 
-func GetUsedImportsFn(imports []Impt, f *ast.FuncDecl) []Impt {
+func GetUsedImports(imports []Impt, n ast.Node) []Impt {
 	alreadyUsed := map[string]bool{}
 	used := []Impt{}
-	ast.Inspect(f, func(node ast.Node) bool {
+	ast.Inspect(n, func(node ast.Node) bool {
 		switch n := node.(type) {
 		case *ast.SelectorExpr:
 			for _, i := range imports {
@@ -23,15 +23,5 @@ func GetUsedImportsFn(imports []Impt, f *ast.FuncDecl) []Impt {
 		}
 		return true
 	})
-	return used
-}
-
-func GetUsedImportsStr(imports []Impt, body string) []Impt {
-	used := []Impt{}
-	for _, i := range imports {
-		if ImportUsed(i, body) {
-			used = append(used, i)
-		}
-	}
 	return used
 }
