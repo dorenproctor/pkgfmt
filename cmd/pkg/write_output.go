@@ -30,4 +30,9 @@ func (p *Pkg) WriteOutput() error {
 		return err
 	}
 	return ioutil.WriteFile(filePath, []byte(s), 0644)
+
+	// if s != "" {
+	// 	return ioutil.WriteFile(filePath, []byte(s), 0644)
+	// }
+	// return nil
 }
