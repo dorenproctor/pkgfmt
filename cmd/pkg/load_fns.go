@@ -2,7 +2,6 @@ package pkg
 
 import (
 	"go/ast"
-	"pkgfmt/cmd/fn"
 	"pkgfmt/cmd/impt"
 )
 
@@ -15,7 +14,7 @@ func (p *Pkg) LoadFns() {
 			}
 			rpos := int(f.End())
 			body := p.Body[lpos:rpos]
-			p.Fns = append(p.Fns, fn.Fn{
+			p.Fns = append(p.Fns, Fn{
 				Name:        f.Name.Name,
 				Body:        body,
 				LPos:        lpos,
