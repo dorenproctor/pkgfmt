@@ -6,6 +6,9 @@ import (
 )
 
 func CopyFilesInDir(src, dst string) error {
+	if err := os.MkdirAll(dst, os.ModePerm); err != nil {
+		return err
+	}
 	dir, err := os.Open(src)
 	if err != nil {
 		return err
