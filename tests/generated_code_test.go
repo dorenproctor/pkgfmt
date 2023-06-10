@@ -16,8 +16,11 @@ func TestGeneratedCode(t *testing.T) {
 		"input/example/x.go",
 		"input/impt/get_used_imports_str.go",
 	}
-	for _, fileName := range inputFiles {
+	for _, inputFile := range inputFiles {
+		// declaring out here fixes closure loop issue with t.Parallel()
+		fileName := inputFile
 		t.Run(fileName, func(t *testing.T) {
+			t.Parallel()
 			inputDir := path.Dir(fileName)
 			p, err := pkg.New(fileName)
 			assert.NoError(t, err)
