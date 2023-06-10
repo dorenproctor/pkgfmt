@@ -1,4 +1,4 @@
-module pkgsplit
+module pkgfmt
 
 go 1.20
 

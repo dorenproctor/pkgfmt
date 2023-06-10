@@ -3,8 +3,8 @@ package pkg
 import (
 	"go/parser"
 	"go/token"
-	"pkgsplit/cmd/impt"
-	"pkgsplit/cmd/utils/fileutils"
+	"pkgfmt/cmd/impt"
+	"pkgfmt/cmd/utils/fileutils"
 	"regexp"
 )
 

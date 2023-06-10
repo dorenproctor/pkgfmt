@@ -1,4 +1,4 @@
 set -e
 
-go build -o cmd/bin/pksplit
-cmd/bin/pksplit "$@"
+go build -o cmd/bin/pkgfmt
+cmd/bin/pkgfmt "$@"

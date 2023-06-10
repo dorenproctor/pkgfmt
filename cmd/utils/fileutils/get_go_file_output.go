@@ -2,7 +2,7 @@ package fileutils
 
 import (
 	"fmt"
-	"pkgsplit/cmd/impt"
+	"pkgfmt/cmd/impt"
 	"strings"
 )
 

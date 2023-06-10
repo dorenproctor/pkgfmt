@@ -2,8 +2,8 @@ package pkg
 
 import (
 	"go/ast"
-	"pkgsplit/cmd/fn"
-	"pkgsplit/cmd/impt"
+	"pkgfmt/cmd/fn"
+	"pkgfmt/cmd/impt"
 )
 
 func (p *Pkg) LoadFns() {

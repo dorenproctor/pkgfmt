@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"pkgsplit/cmd/impt"
+	"pkgfmt/cmd/impt"
 	"strings"
 )
 
