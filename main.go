@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"pkgfmt/cmd/pkg"
+	"pkgfmt/cmd/utils/strutils"
 )
 
 func main() {
@@ -19,11 +20,7 @@ func main() {
 
 func handleError(err error) {
 	if err != nil {
-		fmt.Println(red(err.Error()))
+		fmt.Println(strutils.Red(err.Error()))
 		os.Exit(1)
 	}
-}
-
-func red(s string) string {
-	return "\033[31m" + s + "\033[0m"
 }
