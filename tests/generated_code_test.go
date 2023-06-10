@@ -13,7 +13,7 @@ func TestGeneratedCode(t *testing.T) {
 	t.Parallel()
 	inputFiles := []string{
 		"input/example/x.go",
-		// "input/impt/get_used_imports_str.go",
+		"input/impt/get_used_imports_str.go",
 	}
 	for _, fileName := range inputFiles {
 		t.Run(fileName, func(t *testing.T) {
