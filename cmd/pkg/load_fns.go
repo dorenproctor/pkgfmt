@@ -15,12 +15,11 @@ func (p *Pkg) LoadFns() {
 			rpos := int(f.End())
 			body := p.Body[lpos:rpos]
 			p.Fns = append(p.Fns, Fn{
-				Name:        f.Name.Name,
-				Body:        body,
-				LPos:        lpos,
-				RPos:        rpos,
-				PackageName: p.Name,
-				Imports:     impt.GetUsedImports(p.Imports, f),
+				Name:    f.Name.Name,
+				Body:    body,
+				LPos:    lpos,
+				RPos:    rpos,
+				Imports: impt.GetUsedImports(p.Imports, f),
 			})
 		}
 	}

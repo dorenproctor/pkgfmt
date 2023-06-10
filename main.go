@@ -15,7 +15,7 @@ func main() {
 	p, err := pkg.New(os.Args[1])
 	handleError(err)
 	handleError(p.WriteOutput())
-
+	// fmt.Println(p)
 }
 
 func handleError(err error) {

@@ -5,20 +5,30 @@ import (
 	"pkgfmt/cmd/impt"
 )
 
+// Package
 type Pkg struct {
-	Name     string
-	FilePath string
-	Body     string
-	Fns      []Fn
-	Imports  []impt.Impt
-	Ast      *ast.File `json:"-"`
+	Name         string
+	FilePath     string
+	Body         string
+	Fns          []Fn
+	Imports      []impt.Impt
+	StructOrIntf []StructOrIntf
+	Ast          *ast.File `json:"-"`
 }
 
+// Function
 type Fn struct {
-	Name        string
-	Body        string
-	LPos        int
-	RPos        int
-	Imports     []impt.Impt
-	PackageName string
+	Name    string
+	Body    string
+	LPos    int
+	RPos    int
+	Imports []impt.Impt
+}
+
+// Interface
+type StructOrIntf struct {
+	Name string
+	Body string
+	LPos int
+	RPos int
 }
