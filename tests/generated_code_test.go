@@ -23,12 +23,9 @@ func TestGeneratedCode(t *testing.T) {
 			assert.NoError(t, err)
 			assert.NoError(t, os.RemoveAll(inputDir+"/generated_pkgfmt"))
 			assert.NoError(t, p.WriteOutput())
+			// generate expected_output by uncommenting this line
+			// assert.NoError(t, fileutils.CopyFilesInDir(inputDir+"/generated_pkgfmt", inputDir+"/expected_output"))
 			assert.NoError(t, fileutils.Diff(inputDir+"/generated_pkgfmt", inputDir+"/expected_output"))
-			// assert.NoError(t, fileutils.CopyDir(inputDir+"/generated_pkgfmt", inputDir+"/expected_output"))
-			// assert.NoError(t, cmdutils.Run("diff", inputDir+"/generated_pkgfmt", inputDir+"/expected_output").Err)
-			// diff, err := fileutils.Diff(inputDir+"/generated_pkgfmt", inputDir+"/expected_output")
-			// assert.NoError(t, err)
-			// fmt.Println(diff)
 		})
 	}
 }
