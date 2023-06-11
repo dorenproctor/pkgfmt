@@ -1,4 +1,4 @@
 set -e
 
-go build -o cmd/bin/github.com/dorenproctor/pkgfmt
-cmd/bin/github.com/dorenproctor/pkgfmt "$@"
+go build -o cmd/bin/pkgfmt
+cmd/bin/pkgfmt "$@"
