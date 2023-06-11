@@ -1,0 +1,71 @@
+name: Create release from semantic versioned tag
+
+# this flow will be run only when new tags are pushed that match our pattern
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go_version: ["1.20", "1.19"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: test
+        uses: actions/setup-go@v3.2.0
+        with:
+          go-version: ${{ matrix.go_version }}
+      - run: go test -v -race ./...
+  release:
+    name: Create Release
+    runs-on: "ubuntu-latest"
+    needs: test
+    strategy:
+      matrix:
+        go_version: ["1.20", "1.19"]
+        # List of GOOS and GOARCH pairs from `go tool dist list`
+        goosarch:
+          - "linux/amd64"
+          - "linux/arm"
+          - "linux/arm64"
+          - "ios/amd64"
+          - "ios/arm64"
+          - "windows/amd64"
+          - "windows/arm"
+          - "windows/arm64"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v2
+      - name: Get OS and arch info
+        run: |
+          GOOSARCH=${{matrix.goosarch}}
+          GOOS=${GOOSARCH%/*}
+          GOARCH=${GOOSARCH#*/}
+          BINARY_NAME=${{github.repository}}-$GOOS-$GOARCH
+          echo "BINARY_NAME=$BINARY_NAME" >> $GITHUB_ENV
+          echo "GOOS=$GOOS" >> $GITHUB_ENV
+          echo "GOARCH=$GOARCH" >> $GITHUB_ENV
+      - name: Build
+        run: |
+          curr_tag=$(git describe HEAD~ --tags --abbrev=0)
+          go build -o "$BINARY_NAME" -v -ldflags "-X main.Version=$curr_tag"
+      - name: Release Notes
+        run: git log $(git describe HEAD~ --tags --abbrev=0)..HEAD --pretty='format:* %h %s%n  * %an <%ae>' --no-merges >> ".github/RELEASE-TEMPLATE.md"
+      - name: Release with Notes
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: ".github/RELEASE-TEMPLATE.md"
+          draft: true
+          files: ${{env.BINARY_NAME}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
