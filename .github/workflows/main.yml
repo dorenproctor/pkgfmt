@@ -13,4 +13,6 @@ jobs:
         uses: actions/setup-go@v3.2.0
         with:
           go-version: ${{ matrix.go_version }}
-      - run: go test -v -race ./...
+      - run: |
+          go test -v -race ./...
+          echo GITHUB_REF is $GITHUB_REF
