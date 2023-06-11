@@ -8,7 +8,7 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/utils/strutils"
 )
 
-var Version = "unofficial version"
+var Version string
 
 func main() {
 	if len(os.Args) == 1 {
@@ -16,6 +16,9 @@ func main() {
 		handleError(e)
 	}
 	if os.Args[1] == "-v" {
+		if Version == "" {
+			Version = "unofficial version"
+		}
 		fmt.Println("pkfmt", Version)
 		return
 	}
