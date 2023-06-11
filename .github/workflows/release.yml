@@ -22,7 +22,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Build
         run: |
-          curr_tag=$(git describe HEAD~ --tags --abbrev=0)
-          go build -o "$BINARY_NAME" -v -ldflags "-X main.Version=$curr_tag"
+          go build -o "$BINARY_NAME" -v -ldflags "-X main.Version=$GITHUB_REF"
       - name: Create GitHub release from tag
         uses: softprops/action-gh-release@v1
