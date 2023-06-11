@@ -2,11 +2,12 @@ package fileutils
 
 import (
 	"fmt"
-	"pkgfmt/cmd/utils/cmdutils"
+
+	"github.com/dorenproctor/easyexec"
 )
 
 func Diff(src, dst string) error {
-	o := cmdutils.Run("diff", src, dst)
+	o := easyexec.Run("diff", src, dst)
 	s := o.Stdout + o.Stderr
 	if s == "" {
 		return nil
