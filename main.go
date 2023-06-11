@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
-	"pkgfmt/cmd/pkg"
-	"pkgfmt/cmd/utils/strutils"
+
+	"github.com/dorenproctor/pkgfmt/cmd/pkg"
+	"github.com/dorenproctor/pkgfmt/cmd/utils/strutils"
 )
 
 func main() {
 	if len(os.Args) == 1 {
-		e := fmt.Errorf("pkgfmt takes one arg, the filepath to a go file")
+		e := fmt.Errorf("github.com/dorenproctor/pkgfmt takes one arg, the filepath to a go file")
 		handleError(e)
 	}
 	p, err := pkg.New(os.Args[1])

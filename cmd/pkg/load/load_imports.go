@@ -1,12 +1,13 @@
-package pkg
+package load
 
 import (
 	"strings"
 
+	"github.com/dorenproctor/github.com/dorenproctor/pkgfmt/types"
 	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
-func (p *Pkg) LoadImports() {
+func (p *types.Pkg) LoadImports() {
 	p.Imports = []impt.Impt{}
 	for _, importSpec := range p.Ast.Imports {
 		i := impt.Impt{Name: importSpec.Path.Value}

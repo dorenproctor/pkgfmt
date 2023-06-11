@@ -2,8 +2,9 @@ package fileutils
 
 import (
 	"fmt"
-	"pkgfmt/cmd/impt"
 	"strings"
+
+	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
 func GetGoFileOutput(packageName, body string, imports []impt.Impt) string {

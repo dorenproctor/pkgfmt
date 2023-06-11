@@ -3,9 +3,10 @@ package pkg
 import (
 	"go/parser"
 	"go/token"
-	"pkgfmt/cmd/impt"
-	"pkgfmt/cmd/utils/fileutils"
 	"regexp"
+
+	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
 )
 
 func (p *Pkg) GetRemainingBody() (string, error) {

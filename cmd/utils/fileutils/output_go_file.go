@@ -2,7 +2,8 @@ package fileutils
 
 import (
 	"io/ioutil"
-	"pkgfmt/cmd/impt"
+
+	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
 func OutputGoFile(filePath, packageName, body string, imports []impt.Impt) error {

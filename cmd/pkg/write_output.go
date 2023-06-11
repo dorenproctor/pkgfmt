@@ -5,12 +5,13 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"pkgfmt/cmd/utils/fileutils"
-	"pkgfmt/cmd/utils/strutils"
+
+	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
+	"github.com/dorenproctor/pkgfmt/cmd/utils/strutils"
 )
 
 func (p *Pkg) WriteOutput() error {
-	outputDir := fmt.Sprintf("%s/generated_pkgfmt", filepath.Dir(p.FilePath))
+	outputDir := fmt.Sprintf("%s/generated_github.com/dorenproctor/pkgfmt", filepath.Dir(p.FilePath))
 	err := os.MkdirAll(outputDir, os.ModePerm)
 	if err != nil {
 		return err

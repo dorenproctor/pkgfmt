@@ -1,12 +1,13 @@
-package pkg
+package load
 
 import (
 	"go/ast"
 
-	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/github.com/dorenproctor/pkgfmt/types/cmd/impt"
+	"github.com/dorenproctor/pkgfmt/types"
 )
 
-func (p *Pkg) LoadFns() {
+func (p *types.Pkg) LoadFns() {
 	for _, decl := range p.Ast.Decls {
 		if f, ok := decl.(*ast.FuncDecl); ok {
 			lpos := int(f.Pos() - 1)

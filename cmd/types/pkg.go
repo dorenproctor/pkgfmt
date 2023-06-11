@@ -1,13 +1,12 @@
-package pkg
+package types
 
 import (
 	"go/ast"
-
-	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/github.com/dorenproctor/pkgfmt/types/cmd/impt"
 )
 
 // Package
-type Pkg struct {
+type types.Pkg struct {
 	Name         string
 	FilePath     string
 	Body         string
