@@ -3,7 +3,7 @@ module github.com/dorenproctor/pkgfmt
 go 1.20
 
 require (
-	github.com/dorenproctor/easyexec v0.0.4
+	github.com/dorenproctor/easyexec v0.1.0
 	github.com/stretchr/testify v1.8.4
 )
 
