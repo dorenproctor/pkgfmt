@@ -10,7 +10,7 @@ import (
 
 func main() {
 	if len(os.Args) == 1 {
-		e := fmt.Errorf("github.com/dorenproctor/pkgfmt takes one arg, the filepath to a go file")
+		e := fmt.Errorf("pkgfmt takes one arg, the filepath to a go file")
 		handleError(e)
 	}
 	p, err := pkg.New(os.Args[1])

@@ -25,12 +25,12 @@ func TestGeneratedCode(t *testing.T) {
 			inputDir := path.Dir(fileName)
 			p, err := pkg.New(fileName)
 			assert.NoError(t, err)
-			assert.NoError(t, os.RemoveAll(inputDir+"/generated_github.com/dorenproctor/pkgfmt"))
+			assert.NoError(t, os.RemoveAll(inputDir+"/generated_pkgfmt"))
 			assert.NoError(t, p.WriteOutput())
 			if os.Getenv("OVERWRITE_TEST_EXPECTED_OUTPUT") == "true" {
-				assert.NoError(t, fileutils.CopyFilesInDir(inputDir+"/generated_github.com/dorenproctor/pkgfmt", inputDir+"/expected_output"))
+				assert.NoError(t, fileutils.CopyFilesInDir(inputDir+"/generated_pkgfmt", inputDir+"/expected_output"))
 			}
-			assert.NoError(t, fileutils.Diff(inputDir+"/generated_github.com/dorenproctor/pkgfmt", inputDir+"/expected_output"))
+			assert.NoError(t, fileutils.Diff(inputDir+"/generated_pkgfmt", inputDir+"/expected_output"))
 		})
 	}
 }

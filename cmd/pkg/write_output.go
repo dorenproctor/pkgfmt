@@ -11,7 +11,7 @@ import (
 )
 
 func (p *Pkg) WriteOutput() error {
-	outputDir := fmt.Sprintf("%s/generated_github.com/dorenproctor/pkgfmt", filepath.Dir(p.FilePath))
+	outputDir := fmt.Sprintf("%s/generated_pkgfmt", filepath.Dir(p.FilePath))
 	err := os.MkdirAll(outputDir, os.ModePerm)
 	if err != nil {
 		return err
