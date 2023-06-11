@@ -16,16 +16,20 @@ func main() {
 		handleError(e)
 	}
 	if os.Args[1] == "-v" {
-		if Version == "" {
-			Version = "unofficial version"
-		}
-		fmt.Println("pkfmt", Version)
+		printVersion()
 		return
 	}
 	p, err := pkg.New(os.Args[1])
 	handleError(err)
 	handleError(p.WriteOutput())
 	// fmt.Println(p)
+}
+
+func printVersion() {
+	if Version == "" {
+		Version = "unpublished version"
+	}
+	fmt.Println("pkfmt", Version)
 }
 
 func handleError(err error) {
