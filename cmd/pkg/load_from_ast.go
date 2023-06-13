@@ -2,9 +2,12 @@ package pkg
 
 import (
 	"go/ast"
+
+	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
 func (p *Pkg) LoadFromAst() {
+	p.VarImports = map[string]impt.Impt{}
 	p.StructsIntfs = []StructsIntfs{}
 	var lastIdent *ast.Ident
 	ast.Inspect(p.Ast, func(node ast.Node) bool {

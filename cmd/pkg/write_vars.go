@@ -8,9 +8,16 @@ import (
 )
 
 func (p *Pkg) WriteVars(outputDir string) error {
-	s := strings.Join(p.Vars, "\n")
+	if len(p.Vars) == 0 {
+		return nil
+	}
 	filePath := outputDir + "/vars.go"
-	err := fileutils.OutputGoFile(filePath, p.Name, s, []impt.Impt{})
+	varDeclarations := strings.Join(p.Vars, "\n")
+	impts := []impt.Impt{}
+	for _, i := range p.VarImports {
+		impts = append(impts, i)
+	}
+	err := fileutils.OutputGoFile(filePath, p.Name, varDeclarations, impts)
 	if err != nil {
 		return err
 	}

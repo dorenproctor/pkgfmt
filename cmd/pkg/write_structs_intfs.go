@@ -6,6 +6,9 @@ import (
 )
 
 func (p *Pkg) WriteStructsIntfs(outputDir string) error {
+	if len(p.StructsIntfs) == 0 {
+		return nil
+	}
 	s := ""
 	for _, x := range p.StructsIntfs {
 		s += x.Body + "\n"

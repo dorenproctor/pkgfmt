@@ -14,7 +14,7 @@ import (
 func TestGeneratedCode(t *testing.T) {
 	t.Parallel()
 	inputFiles := []string{
-		"input/example/x.go",
+		"input/example/example.go",
 		"input/impt/get_used_imports_str.go",
 	}
 	for _, inputFile := range inputFiles {
