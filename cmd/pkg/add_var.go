@@ -8,9 +8,7 @@ import (
 )
 
 func (p *Pkg) AddVar(node ast.Node) {
-	lpos := int(node.Pos() - 1)
-	rpos := int(node.End())
-	body := p.Body[lpos:rpos]
+	body := p.Body[node.Pos()-1 : node.End()]
 	varType := ""
 	if strings.HasPrefix(body, "var") {
 		varType = "var"
