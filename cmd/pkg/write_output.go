@@ -14,10 +14,10 @@ func (p *Pkg) WriteOutput() error {
 	if err := p.WriteFns(outputDir); err != nil {
 		return err
 	}
-	if err := p.WriteStructsIntfs(outputDir); err != nil {
+	if err := p.WritePkgParts(outputDir+"/types.go", p.StructsIntfs); err != nil {
 		return err
 	}
-	if err := p.WriteVars(outputDir); err != nil {
+	if err := p.WritePkgParts(outputDir+"/vars.go", p.Vars); err != nil {
 		return err
 	}
 	return nil

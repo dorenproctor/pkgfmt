@@ -15,7 +15,7 @@ type Pkg struct {
 	// full package contents
 	Body string
 	// list of the body of all var/const declarations
-	Vars []string
+	Vars []PkgPart
 	// imports used in var declarations
 	VarImports map[string]impt.Impt
 	// each func will get its own file

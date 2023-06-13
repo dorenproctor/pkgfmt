@@ -6,21 +6,20 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/utils/sliceutils"
 )
 
-func (p *Pkg) WriteStructsIntfs(outputDir string) error {
-	if len(p.StructsIntfs) == 0 {
+func (p *Pkg) WritePkgParts(outputFilePath string, parts []PkgPart) error {
+	if len(parts) == 0 {
 		return nil
 	}
 	s := ""
-	for _, x := range p.StructsIntfs {
+	for _, x := range parts {
 		s += x.Body + "\n"
 	}
-	filePath := outputDir + "/types.go"
 	impts := []impt.Impt{}
-	for _, x := range p.StructsIntfs {
+	for _, x := range parts {
 		impts = append(impts, x.Imports...)
 	}
 	impts = sliceutils.RemoveDuplicates[impt.Impt](impts)
-	err := fileutils.OutputGoFile(filePath, p.Name, s, impts)
+	err := fileutils.OutputGoFile(outputFilePath, p.Name, s, impts)
 	if err != nil {
 		return err
 	}
