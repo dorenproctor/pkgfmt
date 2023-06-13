@@ -5,9 +5,9 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
 )
 
-func (p *Pkg) WriteStructOrIntf(outputDir string) error {
+func (p *Pkg) WriteStructsIntfs(outputDir string) error {
 	s := ""
-	for _, x := range p.StructOrIntf {
+	for _, x := range p.StructsIntfs {
 		s += x.Body + "\n"
 	}
 	filePath := outputDir + "/types.go"

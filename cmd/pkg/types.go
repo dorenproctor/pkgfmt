@@ -13,7 +13,7 @@ type Pkg struct {
 	Body         string
 	Fns          []Fn
 	Imports      []impt.Impt
-	StructOrIntf []StructOrIntf
+	StructsIntfs []StructsIntfs
 	Ast          *ast.File `json:"-"`
 }
 
@@ -27,7 +27,7 @@ type Fn struct {
 }
 
 // Interface
-type StructOrIntf struct {
+type StructsIntfs struct {
 	Name string
 	Body string
 	LPos int
