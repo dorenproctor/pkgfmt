@@ -7,7 +7,7 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
-func (p *Pkg) NewVar(node ast.Node) {
+func (p *Pkg) AddVar(node ast.Node) {
 	lpos := int(node.Pos() - 1)
 	rpos := int(node.End())
 	body := p.Body[lpos:rpos]

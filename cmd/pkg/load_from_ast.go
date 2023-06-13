@@ -15,13 +15,13 @@ func (p *Pkg) LoadFromAst() {
 		case *ast.Ident:
 			lastIdent = n
 		case *ast.InterfaceType:
-			p.StructsIntfs = append(p.StructsIntfs, p.NewStructsIntfs(n, lastIdent))
+			p.AddStructsIntfs(n, lastIdent)
 		case *ast.StructType:
-			p.StructsIntfs = append(p.StructsIntfs, p.NewStructsIntfs(n, lastIdent))
+			p.AddStructsIntfs(n, lastIdent)
 		case *ast.FuncDecl:
-			p.Fns = append(p.Fns, p.NewFn(n))
+			p.AddFn(n)
 		case ast.Decl:
-			p.NewVar(n)
+			p.AddVar(n)
 		}
 		return true
 	})
