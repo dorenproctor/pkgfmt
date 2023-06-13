@@ -13,8 +13,6 @@ func (p *Pkg) NewStructsIntfs(node ast.Node, lastIdent *ast.Ident) PkgPart {
 	body := p.Body[lpos:rpos]
 	return PkgPart{
 		Type:    strings.Split(body, " ")[2],
-		LPos:    lpos,
-		RPos:    rpos,
 		Body:    body,
 		Imports: impt.GetUsedImports(p.Imports, node),
 	}

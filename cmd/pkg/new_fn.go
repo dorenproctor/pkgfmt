@@ -17,8 +17,6 @@ func (p *Pkg) NewFn(node *ast.FuncDecl) PkgPart {
 		Type:    "func",
 		Name:    node.Name.Name,
 		Body:    body,
-		LPos:    lpos,
-		RPos:    rpos,
 		Imports: impt.GetUsedImports(p.Imports, node),
 	}
 }

@@ -35,10 +35,6 @@ type PkgPart struct {
 	Name string
 	// the content of this part of the package
 	Body string
-	// index of beginning of this part's body in the package's body
-	LPos int
-	// index of end of this part's body in the package's body
-	RPos int
 	// imports used by this package part
 	Imports []impt.Impt
 }

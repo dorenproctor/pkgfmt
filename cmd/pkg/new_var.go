@@ -22,8 +22,6 @@ func (p *Pkg) NewVar(node ast.Node) {
 	}
 	p.Vars = append(p.Vars, PkgPart{
 		Type:    varType,
-		LPos:    lpos,
-		RPos:    rpos,
 		Body:    body,
 		Imports: impt.GetUsedImports(p.Imports, node),
 	})
