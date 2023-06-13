@@ -10,6 +10,5 @@ func New(filePath string) (*Pkg, error) {
 	}
 	p.LoadImports()
 	p.LoadFromAst()
-	// p.LoadFns()
 	return &p, nil
 }

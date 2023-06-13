@@ -1,13 +1,21 @@
 package pkg
 
-import "go/ast"
+import (
+	"go/ast"
+	"strings"
 
-func (p *Pkg) NewStructsIntfs(node ast.Node, lastIdent *ast.Ident) StructsIntfs {
+	"github.com/dorenproctor/pkgfmt/cmd/impt"
+)
+
+func (p *Pkg) NewStructsIntfs(node ast.Node, lastIdent *ast.Ident) PkgPart {
 	lpos := int(lastIdent.Pos() - 6)
 	rpos := int(node.End())
-	return StructsIntfs{
-		LPos: lpos,
-		RPos: rpos,
-		Body: p.Body[lpos:rpos],
+	body := p.Body[lpos:rpos]
+	return PkgPart{
+		Type:    strings.Split(body, " ")[2],
+		LPos:    lpos,
+		RPos:    rpos,
+		Body:    body,
+		Imports: impt.GetUsedImports(p.Imports, node),
 	}
 }

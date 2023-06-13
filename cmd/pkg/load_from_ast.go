@@ -8,7 +8,7 @@ import (
 
 func (p *Pkg) LoadFromAst() {
 	p.VarImports = map[string]impt.Impt{}
-	p.StructsIntfs = []StructsIntfs{}
+	p.StructsIntfs = []PkgPart{}
 	var lastIdent *ast.Ident
 	ast.Inspect(p.Ast, func(node ast.Node) bool {
 		switch n := node.(type) {

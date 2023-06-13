@@ -19,28 +19,43 @@ type Pkg struct {
 	// imports used in var declarations
 	VarImports map[string]impt.Impt
 	// each func will get its own file
-	Fns []Fn
+	Fns []PkgPart
 	// all imports used by this package
 	Imports []impt.Impt
 	// structs or interfaces
-	StructsIntfs []StructsIntfs
+	StructsIntfs []PkgPart
 	// abstract syntax tree for the package
 	Ast *ast.File `json:"-"`
 }
 
-// func
-type Fn struct {
-	Name    string
-	Body    string
-	LPos    int
-	RPos    int
+type PkgPart struct {
+	// func/struct/var/const
+	Type string
+	// Name for funcs - blank for others
+	Name string
+	// the content of this part of the package
+	Body string
+	// index of beginning of this part's body in the package's body
+	LPos int
+	// index of end of this part's body in the package's body
+	RPos int
+	// imports used by this package part
 	Imports []impt.Impt
 }
 
-// interface
-type StructsIntfs struct {
-	Name string
-	Body string
-	LPos int
-	RPos int
-}
+// // func
+// type Fn struct {
+// 	Name    string
+// 	Body    string
+// 	LPos    int
+// 	RPos    int
+// 	Imports []impt.Impt
+// }
+
+// // interface
+// type StructsIntfs struct {
+// 	Name string
+// 	Body string
+// 	LPos int
+// 	RPos int
+// }
