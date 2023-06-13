@@ -21,5 +21,4 @@ func (p *Pkg) WriteOutput() error {
 		return err
 	}
 	return nil
-	// return p.WriteRemainingBody(outputDir)
 }
