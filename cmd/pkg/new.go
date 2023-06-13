@@ -9,7 +9,7 @@ func New(filePath string) (*Pkg, error) {
 		return &p, err
 	}
 	p.LoadImports()
-	p.LoadStructOrIntfs()
-	p.LoadFns()
+	p.LoadFromAst()
+	// p.LoadFns()
 	return &p, nil
 }
