@@ -29,7 +29,7 @@ type Pkg struct {
 }
 
 type PkgPart struct {
-	// func/struct/var/const
+	// func/struct/interface/var/const
 	Type string
 	// Name for funcs - blank for others
 	Name string
@@ -42,20 +42,3 @@ type PkgPart struct {
 	// imports used by this package part
 	Imports []impt.Impt
 }
-
-// // func
-// type Fn struct {
-// 	Name    string
-// 	Body    string
-// 	LPos    int
-// 	RPos    int
-// 	Imports []impt.Impt
-// }
-
-// // interface
-// type StructsIntfs struct {
-// 	Name string
-// 	Body string
-// 	LPos int
-// 	RPos int
-// }
