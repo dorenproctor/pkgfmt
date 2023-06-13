@@ -6,19 +6,29 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
-// Package
+// package
 type Pkg struct {
-	Name         string
-	FilePath     string
-	Body         string
-	Vars         []string
-	Fns          []Fn
-	Imports      []impt.Impt
+	// name of package
+	Name string
+	// path to file that was read
+	FilePath string
+	// full package contents
+	Body string
+	// list of the body of all var/const declarations
+	Vars []string
+	// imports used in var declarations
+	VarImports map[string]impt.Impt
+	// each func will get its own file
+	Fns []Fn
+	// all imports used by this package
+	Imports []impt.Impt
+	// structs or interfaces
 	StructsIntfs []StructsIntfs
-	Ast          *ast.File `json:"-"`
+	// abstract syntax tree for the package
+	Ast *ast.File `json:"-"`
 }
 
-// Function
+// func
 type Fn struct {
 	Name    string
 	Body    string
@@ -27,7 +37,7 @@ type Fn struct {
 	Imports []impt.Impt
 }
 
-// Interface
+// interface
 type StructsIntfs struct {
 	Name string
 	Body string

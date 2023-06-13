@@ -2,7 +2,6 @@ package pkg
 
 import (
 	"go/ast"
-	"strings"
 )
 
 func (p *Pkg) LoadFromAst() {
@@ -19,10 +18,7 @@ func (p *Pkg) LoadFromAst() {
 		case *ast.FuncDecl:
 			p.Fns = append(p.Fns, p.NewFn(n))
 		case ast.Decl:
-			s := p.Body[int(node.Pos()-1):int(node.End())]
-			if strings.HasPrefix(s, "var") || strings.HasPrefix(s, "const") {
-				p.Vars = append(p.Vars, s)
-			}
+			p.NewVar(n)
 		}
 		return true
 	})
