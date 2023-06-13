@@ -28,17 +28,3 @@ func (p *Pkg) NewVar(node ast.Node) {
 		Imports: impt.GetUsedImports(p.Imports, node),
 	})
 }
-
-// func (p *Pkg) OldNewVar(node ast.Node) {
-// 	s := p.Body[int(node.Pos()-1):int(node.End())]
-// 	if strings.HasPrefix(s, "var") || strings.HasPrefix(s, "const") {
-// 		p.Vars = append(p.Vars, s)
-// 		for _, i := range impt.GetUsedImports(p.Imports, node) {
-// 			name := i.Alias
-// 			if name == "" {
-// 				name = i.Name
-// 			}
-// 			p.VarImports[name] = i
-// 		}
-// 	}
-// }
