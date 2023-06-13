@@ -11,6 +11,7 @@ type Pkg struct {
 	Name         string
 	FilePath     string
 	Body         string
+	Vars         []string
 	Fns          []Fn
 	Imports      []impt.Impt
 	StructsIntfs []StructsIntfs

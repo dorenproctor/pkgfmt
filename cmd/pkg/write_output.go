@@ -14,8 +14,12 @@ func (p *Pkg) WriteOutput() error {
 	if err := p.WriteFns(outputDir); err != nil {
 		return err
 	}
-	// if err := p.WriteStructsIntfs(outputDir); err != nil {
-	// 	return err
-	// }
-	return p.WriteRemainingBody(outputDir)
+	if err := p.WriteStructsIntfs(outputDir); err != nil {
+		return err
+	}
+	if err := p.WriteVars(outputDir); err != nil {
+		return err
+	}
+	return nil
+	// return p.WriteRemainingBody(outputDir)
 }
