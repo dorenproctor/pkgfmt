@@ -23,6 +23,11 @@ type Person struct {
 	Fooer
 }
 
+// shh
+func (p Person) TellSecret() string {
+	return p.secret
+}
+
 type Asdf interface{}
 
 // Does X things
@@ -35,3 +40,6 @@ func x(m JustAStringMap) {
 func yzzy(s string) string {
 	return str.Replace(s, "yzzy", "", -1)
 }
+
+// loose comments
+// should loose comments go somewhere?
