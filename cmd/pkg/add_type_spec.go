@@ -13,11 +13,9 @@ func (p *Pkg) AddTypeSpec(node ast.Node) {
 		return
 	}
 	body := p.Body[lpos:node.End()]
-	if strings.HasPrefix(body, "type ") {
-		p.TypeSpecs = append(p.TypeSpecs, PkgPart{
-			Type:    strings.Split(body, " ")[2],
-			Body:    body,
-			Imports: impt.GetUsedImports(p.Imports, node),
-		})
-	}
+	p.TypeSpecs = append(p.TypeSpecs, PkgPart{
+		Type:    strings.Split(body, " ")[2],
+		Body:    body,
+		Imports: impt.GetUsedImports(p.Imports, node),
+	})
 }
