@@ -8,16 +8,11 @@ import (
 
 func (p *Pkg) LoadFromAst() {
 	p.VarImports = map[string]impt.Impt{}
-	p.StructsIntfs = []PkgPart{}
-	var lastIdent *ast.Ident
+	p.TypeSpecs = []PkgPart{}
 	ast.Inspect(p.Ast, func(node ast.Node) bool {
 		switch n := node.(type) {
-		case *ast.Ident:
-			lastIdent = n
-		case *ast.InterfaceType:
-			p.AddStructsIntfs(n, lastIdent)
-		case *ast.StructType:
-			p.AddStructsIntfs(n, lastIdent)
+		case *ast.TypeSpec:
+			p.AddTypeSpec(n)
 		case *ast.FuncDecl:
 			p.AddFn(n)
 		case ast.Decl:

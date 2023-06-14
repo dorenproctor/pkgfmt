@@ -6,6 +6,6 @@ import (
 )
 
 // Does X things
-func x() {
-	fmt.Println(yzzy(str.Trim("x!", str.ToLower("ASDF"))))
+func x(m JustAStringMap) {
+	fmt.Println(m, yzzy(str.Trim("x!", str.ToLower("ASDF"))))
 }

@@ -12,18 +12,22 @@ var (
 
 const foo = "bar"
 
+type Fooer func(string) string
+type JustAStringMap map[string]string
+
 type Person struct {
 	Name   string
 	secret string
 	fmt.Formatter
 	fmt.Scanner
+	Fooer
 }
 
 type Asdf interface{}
 
 // Does X things
-func x() {
-	fmt.Println(yzzy(str.Trim("x!", str.ToLower("ASDF"))))
+func x(m JustAStringMap) {
+	fmt.Println(m, yzzy(str.Trim("x!", str.ToLower("ASDF"))))
 }
 
 // yzzy man

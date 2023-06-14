@@ -14,7 +14,7 @@ func (p *Pkg) WriteOutput() error {
 	if err := p.WriteFns(outputDir); err != nil {
 		return err
 	}
-	if err := p.WritePkgParts(outputDir+"/types.go", p.StructsIntfs); err != nil {
+	if err := p.WritePkgParts(outputDir+"/types.go", p.TypeSpecs); err != nil {
 		return err
 	}
 	if err := p.WritePkgParts(outputDir+"/vars.go", p.Vars); err != nil {

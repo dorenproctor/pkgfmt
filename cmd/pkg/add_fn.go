@@ -8,7 +8,7 @@ import (
 
 func (p *Pkg) AddFn(node *ast.FuncDecl) {
 	lpos := node.Pos() - 1
-	// include docs if they're included
+	// include docs if they're there
 	if node.Doc != nil && len(node.Doc.List) > 0 {
 		lpos = node.Doc.List[0].Pos() - 1
 	}

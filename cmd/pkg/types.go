@@ -22,8 +22,8 @@ type Pkg struct {
 	Fns []PkgPart
 	// all imports used by this package
 	Imports []impt.Impt
-	// structs or interfaces
-	StructsIntfs []PkgPart
+	// things declared with "type"
+	TypeSpecs []PkgPart
 	// abstract syntax tree for the package
 	Ast *ast.File `json:"-"`
 }
