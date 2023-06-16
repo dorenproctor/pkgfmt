@@ -1,13 +1,11 @@
 package pkg
 
 import (
-	"fmt"
 	"os"
-	"path/filepath"
 )
 
 func (p Package) WriteOutput() error {
-	outputDir := fmt.Sprintf("%s/generated_pkgfmt", filepath.Dir(p.FilePath))
+	outputDir := p.GetOutputDir()
 	if err := os.MkdirAll(outputDir, os.ModePerm); err != nil {
 		return err
 	}

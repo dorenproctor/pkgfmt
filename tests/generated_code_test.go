@@ -16,21 +16,24 @@ func TestGeneratedCode(t *testing.T) {
 	inputFiles := []string{
 		"input/example/example.go",
 		"input/impt/get_used_imports_str.go",
+		"input/errors",
 	}
 	for _, inputFile := range inputFiles {
 		// declaring out here fixes closure loop issue with t.Parallel()
 		fileName := inputFile
 		t.Run(fileName, func(t *testing.T) {
 			t.Parallel()
-			inputDir := path.Dir(fileName)
+			// inputDir := path.Dir(fileName)
 			p, err := pkg.NewPackage(fileName)
+			outputDir := p.GetOutputDir()
+			expectedDir := path.Dir(outputDir) + "/expected_output"
 			assert.NoError(t, err)
-			assert.NoError(t, os.RemoveAll(inputDir+"/generated_pkgfmt"))
+			assert.NoError(t, os.RemoveAll(outputDir))
 			assert.NoError(t, p.WriteOutput())
 			if os.Getenv("OVERWRITE_TEST_EXPECTED_OUTPUT") == "true" {
-				assert.NoError(t, fileutils.CopyFilesInDir(inputDir+"/generated_pkgfmt", inputDir+"/expected_output"))
+				assert.NoError(t, fileutils.CopyFilesInDir(outputDir, expectedDir))
 			}
-			assert.NoError(t, fileutils.Diff(inputDir+"/generated_pkgfmt", inputDir+"/expected_output"))
+			assert.NoError(t, fileutils.Diff(outputDir, expectedDir))
 		})
 	}
 }
