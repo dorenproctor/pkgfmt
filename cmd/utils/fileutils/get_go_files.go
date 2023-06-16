@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func GetGoFiles(filePath string) ([]string, error) {
+func GetGoFiles(filePath string, includeTestFiles bool) ([]string, error) {
 	info, err := os.Stat(filePath)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -18,7 +18,9 @@ func GetGoFiles(filePath string) ([]string, error) {
 	goFiles := []string{}
 	addIfGoFile := func(s string) {
 		if strings.HasSuffix(s, ".go") {
-			goFiles = append(goFiles, s)
+			if includeTestFiles || !strings.HasSuffix(s, "_test.go") {
+				goFiles = append(goFiles, s)
+			}
 		}
 	}
 	if info.IsDir() {
@@ -34,5 +36,4 @@ func GetGoFiles(filePath string) ([]string, error) {
 		addIfGoFile(filePath)
 	}
 	return goFiles, nil
-
 }

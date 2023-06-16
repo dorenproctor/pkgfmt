@@ -7,7 +7,7 @@ import (
 
 func NewPackage(filePath string) (Package, error) {
 	p := Package{FilePath: filePath, Files: []gofile.GoFile{}}
-	fileNames, err := fileutils.GetGoFiles(filePath)
+	fileNames, err := fileutils.GetGoFiles(filePath, false)
 	if err != nil {
 		return p, err
 	}
