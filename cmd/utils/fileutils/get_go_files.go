@@ -7,6 +7,13 @@ import (
 	"strings"
 )
 
+// If filePath is a directory, get all files inside it ending in "go".
+//
+// If filePath is a valid file ending in ".go", return single length list
+//
+// If filePath is a valid file *not* ending in ".go", return zero length list
+//
+// If includeTestFiles is false, exclude files ending in "_test.go"
 func GetGoFiles(filePath string, includeTestFiles bool) ([]string, error) {
 	info, err := os.Stat(filePath)
 	if err != nil {

@@ -6,6 +6,7 @@ import (
 	"github.com/dorenproctor/easyexec"
 )
 
+// diff two files using the diff command built into your shell
 func Diff(src, dst string) error {
 	o := easyexec.Run("diff", src, dst)
 	s := o.Stdout + o.Stderr

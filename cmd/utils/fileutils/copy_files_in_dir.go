@@ -5,6 +5,9 @@ import (
 	"path/filepath"
 )
 
+// Copies the (non-dir) files from one dir to another
+//
+// Not recursive
 func CopyFilesInDir(src, dst string) error {
 	if err := os.MkdirAll(dst, os.ModePerm); err != nil {
 		return err

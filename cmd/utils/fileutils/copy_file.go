@@ -5,6 +5,9 @@ import (
 	"os"
 )
 
+// Copy file from filepath "src" to "dst"
+//
+// Uses os and io libs
 func CopyFile(src, dst string) error {
 	srcFile, err := os.Open(src)
 	if err != nil {
