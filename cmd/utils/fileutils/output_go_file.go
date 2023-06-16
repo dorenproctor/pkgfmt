@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
 )
 
 // Format contents of go file and output it into filePath

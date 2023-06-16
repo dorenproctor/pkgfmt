@@ -5,7 +5,7 @@ import (
 	"go/token"
 	"io/ioutil"
 
-	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
 )
 
 func New(filePath string) (GoFile, error) {

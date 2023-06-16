@@ -4,7 +4,7 @@ import (
 	"go/ast"
 	"strings"
 
-	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
 )
 
 func (gf *GoFile) addVar(node ast.Node) {

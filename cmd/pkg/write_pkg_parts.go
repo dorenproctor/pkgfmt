@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	"github.com/dorenproctor/pkgfmt/cmd/impt"
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/gofile"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/sliceutils"
 )

@@ -3,7 +3,7 @@ package gofile
 import (
 	"go/ast"
 
-	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
 )
 
 type GoFile struct {
