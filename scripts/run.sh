@@ -1,4 +1,4 @@
 set -e
 
-go build -o cmd/bin/pkgfmt
-cmd/bin/pkgfmt "$@"
+go build -o bin/pkgfmt
+bin/pkgfmt "$@"
