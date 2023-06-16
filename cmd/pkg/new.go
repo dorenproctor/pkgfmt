@@ -23,6 +23,7 @@ func NewPackage(filePath string) (Package, error) {
 		}
 		p.Files = append(p.Files, gf)
 	}
+	p.loadFromFiles()
 	return p, nil
 }
 

@@ -19,8 +19,7 @@ func Run() {
 	}
 	p, err := pkg.NewPackage(os.Args[1])
 	handleError(err)
-	// fmt.Println(p)
-	fmt.Println(p.GetAllImports())
+	fmt.Println(p)
 	// fmt.Println(fileutils.GetGoFiles(os.Args[1]))
 	// p, err := pkg.New(os.Args[1])
 	// handleError(err)

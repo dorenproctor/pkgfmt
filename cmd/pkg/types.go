@@ -9,6 +9,12 @@ import (
 
 type Package struct {
 	Files []gofile.GoFile
+	// all imports used by this package
+	Imports []impt.Impt
+	// each func will get its own file
+	Fns []gofile.PkgPart
+	// list of the body of all var/const declarations
+	Vars []gofile.PkgPart
 }
 
 // package

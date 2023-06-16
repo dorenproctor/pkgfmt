@@ -8,5 +8,5 @@ func printVersion() {
 	if Version == "" {
 		Version = "unpublished version"
 	}
-	fmt.Println("pkfmt", Version)
+	fmt.Println("pkgfmt", Version)
 }
