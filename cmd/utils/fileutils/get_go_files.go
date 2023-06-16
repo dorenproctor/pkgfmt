@@ -26,6 +26,7 @@ func GetGoFiles(filePath string) ([]string, error) {
 		if err != nil {
 			return nil, err
 		}
+		filePath = strings.TrimSuffix(filePath, "/")
 		for _, f := range files {
 			addIfGoFile(filePath + "/" + f.Name())
 		}
