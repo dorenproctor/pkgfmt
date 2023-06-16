@@ -6,7 +6,25 @@ import (
 	"io/ioutil"
 
 	"github.com/dorenproctor/pkgfmt/cmd/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/gofile"
+	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
 )
+
+func NewPackage(filePath string) (Package, error) {
+	p := Package{Files: []gofile.GoFile{}}
+	fileNames, err := fileutils.GetGoFiles(filePath)
+	if err != nil {
+		return p, err
+	}
+	for _, f := range fileNames {
+		gf, err := gofile.New(f)
+		if err != nil {
+			return p, err
+		}
+		p.Files = append(p.Files, gf)
+	}
+	return p, nil
+}
 
 func New(filePath string) (*Pkg, error) {
 	p := Pkg{FilePath: filePath}

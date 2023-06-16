@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/strutils"
 )
 
@@ -17,7 +17,10 @@ func Run() {
 		printVersion()
 		return
 	}
-	fmt.Println(fileutils.GetGoFiles(os.Args[1]))
+	p, err := pkg.NewPackage(os.Args[1])
+	handleError(err)
+	fmt.Println(p)
+	// fmt.Println(fileutils.GetGoFiles(os.Args[1]))
 	// p, err := pkg.New(os.Args[1])
 	// handleError(err)
 	// handleError(p.WriteOutput())

@@ -7,7 +7,7 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
-func (gf *GoFile) AddTypeSpec(node ast.Node) {
+func (gf *GoFile) addTypeSpec(node ast.Node) {
 	lpos := strings.LastIndex(gf.Body[0:node.Pos()], "type ")
 	if lpos < 0 {
 		return

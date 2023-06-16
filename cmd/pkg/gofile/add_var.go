@@ -7,7 +7,7 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
-func (gf *GoFile) AddVar(node ast.Node) {
+func (gf *GoFile) addVar(node ast.Node) {
 	body := gf.Body[node.Pos()-1 : node.End()]
 	varType := ""
 	if strings.HasPrefix(body, "var") {

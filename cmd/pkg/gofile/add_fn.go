@@ -6,7 +6,7 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
-func (gf *GoFile) AddFn(node *ast.FuncDecl) {
+func (gf *GoFile) addFn(node *ast.FuncDecl) {
 	lpos := node.Pos() - 1
 	// include docs if they're there
 	if node.Doc != nil && len(node.Doc.List) > 0 {

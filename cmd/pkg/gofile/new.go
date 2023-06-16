@@ -24,5 +24,6 @@ func New(filePath string) (GoFile, error) {
 	if gf.Ast.Name != nil {
 		gf.PackageName = gf.Ast.Name.Name
 	}
+	gf.loadFromAst()
 	return gf, nil
 }
