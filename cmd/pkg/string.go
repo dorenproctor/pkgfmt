@@ -1,11 +1,7 @@
 package pkg
 
-import "encoding/json"
+import "github.com/dorenproctor/pkgfmt/cmd/utils/strutils"
 
 func (p Pkg) String() string {
-	jsonData, err := json.MarshalIndent(p, "", "  ")
-	if err != nil {
-		return "failed to parse Package struct"
-	}
-	return string(jsonData)
+	return strutils.PrettyJson(p)
 }

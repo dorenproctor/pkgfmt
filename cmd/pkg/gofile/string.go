@@ -1,11 +1,7 @@
 package gofile
 
-import "encoding/json"
+import "github.com/dorenproctor/pkgfmt/cmd/utils/strutils"
 
 func (gf GoFile) String() string {
-	jsonData, err := json.MarshalIndent(gf, "", "  ")
-	if err != nil {
-		return "failed to parse Package struct"
-	}
-	return string(jsonData)
+	return strutils.PrettyJson(gf)
 }
