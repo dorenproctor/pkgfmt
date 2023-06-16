@@ -4,10 +4,17 @@ import (
 	"go/parser"
 	"go/token"
 	"io/ioutil"
+
+	"github.com/dorenproctor/pkgfmt/cmd/impt"
 )
 
 func New(filePath string) (GoFile, error) {
-	gf := GoFile{FilePath: filePath}
+	gf := GoFile{
+		FilePath: filePath,
+		Fns:      []PkgPart{},
+		Vars:     []PkgPart{},
+		Imports:  []impt.Impt{},
+	}
 	// get body
 	fileBytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
@@ -25,5 +32,7 @@ func New(filePath string) (GoFile, error) {
 		gf.PackageName = gf.Ast.Name.Name
 	}
 	gf.loadFromAst()
+	// load all imports used in file
+	gf.Imports = impt.LoadImports(gf.Ast)
 	return gf, nil
 }

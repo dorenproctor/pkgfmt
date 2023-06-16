@@ -6,7 +6,7 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/utils/sliceutils"
 )
 
-func (p *Pkg) WritePkgParts(outputFilePath string, parts []PkgPart) error {
+func WritePkgParts(outputFilePath, packageName string, parts []PkgPart) error {
 	if len(parts) == 0 {
 		return nil
 	}
@@ -19,7 +19,7 @@ func (p *Pkg) WritePkgParts(outputFilePath string, parts []PkgPart) error {
 		impts = append(impts, x.Imports...)
 	}
 	impts = sliceutils.RemoveDuplicates[impt.Impt](impts)
-	err := fileutils.OutputGoFile(outputFilePath, p.Name, s, impts)
+	err := fileutils.OutputGoFile(outputFilePath, packageName, s, impts)
 	if err != nil {
 		return err
 	}
