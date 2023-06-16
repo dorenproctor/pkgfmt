@@ -23,7 +23,7 @@ func TestGeneratedCode(t *testing.T) {
 		t.Run(fileName, func(t *testing.T) {
 			t.Parallel()
 			inputDir := path.Dir(fileName)
-			p, err := pkg.New(fileName)
+			p, err := pkg.NewPackage(fileName)
 			assert.NoError(t, err)
 			assert.NoError(t, os.RemoveAll(inputDir+"/generated_pkgfmt"))
 			assert.NoError(t, p.WriteOutput())

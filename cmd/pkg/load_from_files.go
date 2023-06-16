@@ -25,4 +25,10 @@ func (p *Package) loadFromFiles() {
 		fns = append(fns, f.Fns...)
 	}
 	p.Fns = fns
+	// load typespecs
+	types := []gofile.PkgPart{}
+	for _, f := range p.Files {
+		types = append(types, f.TypeSpecs...)
+	}
+	p.TypeSpecs = types
 }

@@ -31,8 +31,9 @@ func New(filePath string) (GoFile, error) {
 	if gf.Ast.Name != nil {
 		gf.PackageName = gf.Ast.Name.Name
 	}
-	gf.loadFromAst()
 	// load all imports used in file
 	gf.Imports = impt.LoadImports(gf.Ast)
+	// load TypeSpecs, Fns, and Vars
+	gf.loadFromAst()
 	return gf, nil
 }

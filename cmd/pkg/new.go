@@ -11,7 +11,7 @@ import (
 )
 
 func NewPackage(filePath string) (Package, error) {
-	p := Package{Files: []gofile.GoFile{}}
+	p := Package{FilePath: filePath, Files: []gofile.GoFile{}}
 	fileNames, err := fileutils.GetGoFiles(filePath)
 	if err != nil {
 		return p, err
@@ -24,6 +24,7 @@ func NewPackage(filePath string) (Package, error) {
 		p.Files = append(p.Files, gf)
 	}
 	p.loadFromFiles()
+	p.Name = p.Files[0].PackageName
 	return p, nil
 }
 
