@@ -4,11 +4,11 @@ package sliceutils
 //
 // https://gosamples.dev/generics-remove-duplicates-slice/
 func RemoveDuplicates[T comparable](s []T) []T {
-	alreadySeen := make(map[T]bool)
+	cache := map[T]bool{}
 	var output []T
 	for _, t := range s {
-		if _, ok := alreadySeen[t]; !ok {
-			alreadySeen[t] = true
+		if _, seen := cache[t]; !seen {
+			cache[t] = true
 			output = append(output, t)
 		}
 	}
