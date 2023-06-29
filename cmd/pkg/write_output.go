@@ -2,6 +2,8 @@ package pkg
 
 import (
 	"os"
+
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/fn"
 )
 
 func (p Package) WriteOutput() error {
@@ -9,7 +11,7 @@ func (p Package) WriteOutput() error {
 	if err := os.MkdirAll(outputDir, os.ModePerm); err != nil {
 		return err
 	}
-	if err := WriteFns(outputDir, p.Name, p.Fns); err != nil {
+	if err := fn.WriteFns(outputDir, p.Name, p.Fns); err != nil {
 		return err
 	}
 	if err := WritePkgParts(outputDir+"/types.go", p.Name, p.TypeSpecs); err != nil {
