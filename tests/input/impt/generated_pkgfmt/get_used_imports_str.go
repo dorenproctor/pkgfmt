@@ -1,6 +1,6 @@
 package impt
 
-// not reliable
+// Get imports referenced in a string - not reliable
 func GetUsedImportsStr(imports []Impt, body string) []Impt {
 	used := []Impt{}
 	for _, i := range imports {

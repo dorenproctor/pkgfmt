@@ -2,13 +2,14 @@ package impt
 
 import "strings"
 
+// Import
 type Impt struct {
 	Alias string
 	Body  string
 	Name  string
 }
 
-// not reliable
+// Get imports referenced in a string - not reliable
 func GetUsedImportsStr(imports []Impt, body string) []Impt {
 	used := []Impt{}
 	for _, i := range imports {
