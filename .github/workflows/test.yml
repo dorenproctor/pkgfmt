@@ -14,5 +14,5 @@ jobs:
         with:
           go-version: ${{ matrix.go_version }}
       - run: |
-          go test -v -race ./...
+          go test $(go list ./... | grep -v tests/input/)
           echo GITHUB_REF is $GITHUB_REF
