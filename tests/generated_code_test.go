@@ -5,6 +5,7 @@ import (
 	"path"
 	"testing"
 
+	"github.com/dorenproctor/pkgfmt/cmd"
 	"github.com/dorenproctor/pkgfmt/cmd/pkg"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
 
@@ -29,7 +30,8 @@ func TestGeneratedCode(t *testing.T) {
 			expectedDir := path.Dir(outputDir) + "/expected_output"
 			assert.NoError(t, err)
 			assert.NoError(t, os.RemoveAll(outputDir))
-			assert.NoError(t, p.WriteOutput())
+			os.Args = []string{"", fileName}
+			cmd.Run()
 			if os.Getenv("OVERWRITE_TEST_EXPECTED_OUTPUT") == "true" {
 				assert.NoError(t, fileutils.CopyFilesInDir(outputDir, expectedDir))
 			}
