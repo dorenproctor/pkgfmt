@@ -10,7 +10,7 @@ builds:
       - linux
       - windows
       - darwin
-    ldflags: |
+    ldflags: >
       -w
       -s
       -extldflags '-static'
