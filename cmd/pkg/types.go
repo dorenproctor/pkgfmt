@@ -3,6 +3,7 @@ package pkg
 import (
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/gofile"
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 )
 
 type Package struct {
@@ -15,9 +16,9 @@ type Package struct {
 	// all imports used by this package
 	Imports []impt.Impt
 	// each func will get its own file
-	Fns []gofile.PkgPart
+	Fns []pkgpart.PkgPart
 	// list of the body of all var/const declarations
-	Vars []gofile.PkgPart
+	Vars []pkgpart.PkgPart
 	// things declared with "type"
-	TypeSpecs []gofile.PkgPart
+	TypeSpecs []pkgpart.PkgPart
 }

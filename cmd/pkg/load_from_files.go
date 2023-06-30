@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	"github.com/dorenproctor/pkgfmt/cmd/pkg/gofile"
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/sliceutils"
 )
 
@@ -14,19 +14,19 @@ func (p *Package) loadFromFiles() {
 	}
 	p.Imports = sliceutils.RemoveDuplicates[impt.Impt](imports)
 	// load vars
-	vars := []gofile.PkgPart{}
+	vars := []pkgpart.PkgPart{}
 	for _, f := range p.Files {
 		vars = append(vars, f.Vars...)
 	}
 	p.Vars = vars
 	// load fns
-	fns := []gofile.PkgPart{}
+	fns := []pkgpart.PkgPart{}
 	for _, f := range p.Files {
 		fns = append(fns, f.Fns...)
 	}
 	p.Fns = fns
 	// load typespecs
-	types := []gofile.PkgPart{}
+	types := []pkgpart.PkgPart{}
 	for _, f := range p.Files {
 		types = append(types, f.TypeSpecs...)
 	}

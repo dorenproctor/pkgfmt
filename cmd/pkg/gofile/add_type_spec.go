@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 )
 
 func (gf *GoFile) addTypeSpec(node ast.Node) {
@@ -13,7 +14,7 @@ func (gf *GoFile) addTypeSpec(node ast.Node) {
 		return
 	}
 	body := gf.Body[lpos:node.End()]
-	gf.TypeSpecs = append(gf.TypeSpecs, PkgPart{
+	gf.TypeSpecs = append(gf.TypeSpecs, pkgpart.PkgPart{
 		Type:    strings.Split(body, " ")[2],
 		Body:    body,
 		Imports: impt.GetUsedImports(gf.Imports, node),

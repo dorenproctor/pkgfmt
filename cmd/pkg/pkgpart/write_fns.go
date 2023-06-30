@@ -1,14 +1,13 @@
-package fn
+package pkgpart
 
 import (
 	"fmt"
 
-	"github.com/dorenproctor/pkgfmt/cmd/pkg/gofile"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/strutils"
 )
 
-func WriteFns(outputDir, packageName string, fns []gofile.PkgPart) error {
+func WriteFns(outputDir, packageName string, fns []PkgPart) error {
 	nameToFns := GroupDuplicatesFns(fns)
 	for name, fns := range nameToFns {
 		body := ""

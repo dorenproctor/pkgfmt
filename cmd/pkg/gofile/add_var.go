@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 )
 
 func (gf *GoFile) addVar(node ast.Node) {
@@ -18,7 +19,7 @@ func (gf *GoFile) addVar(node ast.Node) {
 	if varType == "" {
 		return
 	}
-	gf.Vars = append(gf.Vars, PkgPart{
+	gf.Vars = append(gf.Vars, pkgpart.PkgPart{
 		Type:    varType,
 		Body:    body,
 		Imports: impt.GetUsedImports(gf.Imports, node),

@@ -2,10 +2,12 @@ package gofile
 
 import (
 	"go/ast"
+
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 )
 
 func (gf *GoFile) loadFromAst() {
-	gf.TypeSpecs = []PkgPart{}
+	gf.TypeSpecs = []pkgpart.PkgPart{}
 	ast.Inspect(gf.Ast, func(node ast.Node) bool {
 		switch n := node.(type) {
 		case *ast.TypeSpec:

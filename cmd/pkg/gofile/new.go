@@ -6,13 +6,14 @@ import (
 	"io/ioutil"
 
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 )
 
 func New(filePath string) (GoFile, error) {
 	gf := GoFile{
 		FilePath: filePath,
-		Fns:      []PkgPart{},
-		Vars:     []PkgPart{},
+		Fns:      []pkgpart.PkgPart{},
+		Vars:     []pkgpart.PkgPart{},
 		Imports:  []impt.Impt{},
 	}
 	// get body

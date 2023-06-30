@@ -4,6 +4,7 @@ import (
 	"go/ast"
 
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
+	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 )
 
 func (gf *GoFile) addFn(node *ast.FuncDecl) {
@@ -13,7 +14,7 @@ func (gf *GoFile) addFn(node *ast.FuncDecl) {
 		lpos = node.Doc.List[0].Pos() - 1
 	}
 	body := gf.Body[lpos:node.End()]
-	gf.Fns = append(gf.Fns, PkgPart{
+	gf.Fns = append(gf.Fns, pkgpart.PkgPart{
 		Type:    "func",
 		Name:    node.Name.Name,
 		Body:    body,
