@@ -11,14 +11,14 @@ builds:
       - windows
       - darwin
     ldflags: >
-      '
+      "
       -w
       -s
-      -extldflags "-static"
-      -X "github.com/dorenproctor/pkgfmt/cmd.version={{.Version}}"
-      -X "github.com/dorenproctor/pkgfmt/cmd.gitCommit={{.Commit}}"
-      -X "github.com/dorenproctor/pkgfmt/cmd.buildDate={{.Date}}"
-       '
+      -extldflags '-static'
+      -X 'github.com/dorenproctor/pkgfmt/cmd.version={{.Version}}'
+      -X 'github.com/dorenproctor/pkgfmt/cmd.gitCommit={{.Commit}}'
+      -X 'github.com/dorenproctor/pkgfmt/cmd.buildDate={{.Date}}'
+       "
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of uname.
