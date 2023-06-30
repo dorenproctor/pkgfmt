@@ -8,8 +8,6 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd"
 	"github.com/dorenproctor/pkgfmt/cmd/pkg"
 	"github.com/dorenproctor/pkgfmt/cmd/utils/fileutils"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestGeneratedCode(t *testing.T) {
@@ -24,18 +22,23 @@ func TestGeneratedCode(t *testing.T) {
 		fileName := inputFile
 		t.Run(fileName, func(t *testing.T) {
 			t.Parallel()
-			// inputDir := path.Dir(fileName)
 			p, err := pkg.NewPackage(fileName)
 			outputDir := p.GetOutputDir()
 			expectedDir := path.Dir(outputDir) + "/expected_output"
-			assert.NoError(t, err)
-			assert.NoError(t, os.RemoveAll(outputDir))
+			assertNoError(t, err)
+			assertNoError(t, os.RemoveAll(outputDir))
 			os.Args = []string{"", fileName}
 			cmd.Run()
 			if os.Getenv("OVERWRITE_TEST_EXPECTED_OUTPUT") == "true" {
-				assert.NoError(t, fileutils.CopyFilesInDir(outputDir, expectedDir))
+				assertNoError(t, fileutils.CopyFilesInDir(outputDir, expectedDir))
 			}
-			assert.NoError(t, fileutils.Diff(outputDir, expectedDir))
+			assertNoError(t, fileutils.Diff(outputDir, expectedDir))
 		})
+	}
+}
+
+func assertNoError(t *testing.T, e error) {
+	if e != nil {
+		t.Error(e)
 	}
 }

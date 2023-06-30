@@ -158,3 +158,7 @@ type Impt struct {
 Should you use this for everything? Should you enforce it in your CI/CD pipeline? If you want to, then sure! But probably not. In fact, not all of the code inside this codebase follows the pattern used by the tool.
 
 Sometimes you might want to declare a helper function or variables only used by one function in the same file. Maybe you want to define the one method on a struct in the same file you declare it. There are various other reasons you may not want to enforce the pattern used by this tool.
+
+## Dependencies
+
+This has 0 dependencies on third-party libraries! Only libraries built into the core Go library are used.
