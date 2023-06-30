@@ -19,7 +19,7 @@ func Run() {
 	}
 	p, err := pkg.NewPackage(os.Args[1])
 	handleError(err)
-	fmt.Println(p)
+	handleError(p.WriteOutput())
 }
 
 func handleError(err error) {
