@@ -14,9 +14,9 @@ builds:
       -w
       -s
       -extldflags '-static'
-      -X github.com/dorenproctor/pkgfmt/cmd.version={{.Version}}
-      -X github.com/dorenproctor/pkgfmt/cmd.gitCommit={{.Commit}}
-      -X github.com/dorenproctor/pkgfmt/cmd.buildDate={{.Date}}
+      -X 'github.com/dorenproctor/pkgfmt/cmd.version={{.Version}}'
+      -X 'github.com/dorenproctor/pkgfmt/cmd.gitCommit={{.Commit}}'
+      -X 'github.com/dorenproctor/pkgfmt/cmd.buildDate={{.Date}}'
 
 archives:
   - format: tar.gz
