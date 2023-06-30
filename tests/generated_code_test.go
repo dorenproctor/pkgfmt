@@ -16,6 +16,7 @@ func TestGeneratedCode(t *testing.T) {
 		"input/example/example.go",
 		"input/impt/get_used_imports_str.go",
 		"input/errors",
+		"input/cmd",
 	}
 	for _, inputFile := range inputFiles {
 		// declaring out here fixes closure loop issue with t.Parallel()

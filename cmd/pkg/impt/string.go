@@ -4,7 +4,7 @@ import "fmt"
 
 func (i Impt) String() string {
 	if i.Alias == "" {
-		return i.NameWithQuotes
+		return i.FullName
 	}
-	return fmt.Sprintf("%s %s", i.Alias, i.NameWithQuotes)
+	return fmt.Sprintf("%s %s", i.Alias, i.FullName)
 }
