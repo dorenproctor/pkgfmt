@@ -10,10 +10,6 @@
 
 `pkgfmt ./internal/mypkg` - Use it on a whole directory of go files
 
-`pkgfmt version` - Print version
-
-`pkgfmt version -v` (or `--verbose`) - Print more version info
-
 ---
 
 ## What this does
@@ -153,6 +149,7 @@ type Impt struct {
 - Docstrings for `type` declarations are lost.
 - Currently any loose comments (ie not docstrings) are lost. `go/ast` simply does not include these. I've thought of a couple ways these could be detected and added to a `comments.go` file, but this is not implemented.
 - Test files are not included.
+- The `version` command does not work. In [run.sh](./scripts/run.sh) the ldflags variables are populating the variables as expected but the ldflags specified in [.goreleaser.yml](.goreleaser.yml) are not populating them in the published version and I have not been able to figure out why.
 
 ---
 
