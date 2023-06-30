@@ -2,24 +2,19 @@ package fileutils
 
 import (
 	"fmt"
-
-	"github.com/dorenproctor/easyexec"
+	"os/exec"
 )
 
 // diff two files using the diff command built into your shell
+//
+// only returns nil if no differences were found
 func Diff(src, dst string) error {
-	o := easyexec.Run("diff", src, dst)
-	s := o.Stdout + o.Stderr
-	if s == "" {
-		return nil
+	bytes, err := exec.Command("diff", src, dst).Output()
+	if err != nil && err.Error() == "exit status 2" {
+		return fmt.Errorf("'%s' or '%s' does not exist", src, dst)
 	}
-	return fmt.Errorf(s)
+	if len(bytes) > 0 {
+		return fmt.Errorf("%s", string(bytes))
+	}
+	return nil
 }
-
-// func Diff(src, dst string) (string, error) {
-// 	bytes, err := exec.Command("diff", src, dst).Output()
-// 	if err != nil && err.Error() == "exit status 2" {
-// 		return string(bytes), fmt.Errorf("'%s' or '%s' does not exist", src, dst)
-// 	}
-// 	return string(bytes), err
-// }
