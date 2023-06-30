@@ -7,7 +7,7 @@ type Impt struct {
 	FullName string
 
 	// Name of imported package, after last / of import path,
-	// eg "ast" from `import "go/ast`"
+	// eg "ast" from `import "go/ast"`
 	Name string
 
 	// Optional alias variable before the import,

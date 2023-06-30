@@ -14,13 +14,13 @@ type GoFile struct {
 	PackageName string
 	// full file contents
 	Body string
-	// each func will get its own file
+	// all funcs in file
 	Fns []pkgpart.PkgPart
-	// list of the body of all var/const declarations
+	// var and const declarations
 	Vars []pkgpart.PkgPart
-	// all imports used by this package
+	// all imports used in file
 	Imports []impt.Impt
-	// things declared with "type"
+	// all things declared with "type"
 	TypeSpecs []pkgpart.PkgPart
 	// abstract syntax tree for the package
 	Ast *ast.File `json:"-"`

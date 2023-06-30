@@ -9,16 +9,16 @@ import (
 type Package struct {
 	// Package name taken from first file
 	Name string
-	// path to file that was read
+	// path that was passed as argument
 	FilePath string
-	// data about either the file passed or all go files in dir passed
+	// either all go files in dir passed or single length if file passed
 	Files []gofile.GoFile
-	// all imports used by this package
+	// all imports used in package
 	Imports []impt.Impt
-	// each func will get its own file
+	// all funcs in package
 	Fns []pkgpart.PkgPart
-	// list of the body of all var/const declarations
+	// all var and const declarations in package
 	Vars []pkgpart.PkgPart
-	// things declared with "type"
+	// all things declared with "type" in package
 	TypeSpecs []pkgpart.PkgPart
 }
