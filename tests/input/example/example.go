@@ -7,11 +7,11 @@ import (
 
 var (
 	// this is not lost
-	s string
-	t = fmt.Sprintf("%s %s", "", "")
+	S string
+	T = fmt.Sprintf("%s %s", "", "")
 )
 
-const foo = "bar"
+const Foo = "bar"
 
 // this is currently lost....
 type Fooer func(string) string
@@ -35,13 +35,13 @@ func (p Person) TellSecret() string {
 type Asdf interface{}
 
 // Does X things
-func x(m JustAStringMap) {
-	fmt.Println(m, yzzy(str.Trim("x!", str.ToLower("ASDF"))))
+func X(m JustAStringMap) {
+	fmt.Println(m, Yzzy(str.Trim("x!", str.ToLower("ASDF"))))
 }
 
 // yzzy man
 // what more is there to say?
-func yzzy(s string) string {
+func Yzzy(s string) string {
 	return str.Replace(s, "yzzy", "", -1)
 }
 
