@@ -1,6 +1,6 @@
 # pkgfmt
 
-`pkgfmt` formats your Go packages.
+`pkgfmt` is a CLI tool that formats Go packages.
 
 ---
 
@@ -150,6 +150,7 @@ type Impt struct {
 
 ## Known Limitations
 
+- Docstrings for `type` declarations are lost.
 - Currently any loose comments (ie not docstrings) are lost. `go/ast` simply does not include these. I've thought of a couple ways these could be detected and added to a `comments.go` file, but this is not implemented.
 - Test files are not included.
 

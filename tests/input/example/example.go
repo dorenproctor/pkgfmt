@@ -6,16 +6,20 @@ import (
 )
 
 var (
+	// this is not lost
 	s string
 	t = fmt.Sprintf("%s %s", "", "")
 )
 
 const foo = "bar"
 
+// this is currently lost....
 type Fooer func(string) string
 type JustAStringMap map[string]string
 
+// this is currently lost....
 type Person struct {
+	// this is not lost
 	Name   string
 	secret string
 	fmt.Formatter
