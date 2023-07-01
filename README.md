@@ -2,6 +2,8 @@
 
 `pkgfmt` is a CLI tool that formats Go packages.
 
+This has 0 dependencies on third-party libraries! Only libraries built into the core Go library are used.
+
 ---
 
 ## Using pkgfmt
@@ -163,10 +165,20 @@ type Impt struct {
 
 ## Known Limitations
 
-- Docstrings for `type` declarations are lost.
+- Docstrings for `type` declarations are lost. Not the fields, but the type itself.
 - Currently any loose comments (ie not docstrings) are lost. `go/ast` simply does not include these. I've thought of a couple ways these could be detected and added to a `comments.go` file, but this is not implemented.
-- Test files are not included.
+- Test files are not included when passing a dir. You can pass them individuall though.
 - The `version` command does not work. In [run.sh](./scripts/run.sh) the ldflags variables are populating the variables as expected but the ldflags specified in [.goreleaser.yml](.goreleaser.yml) are not populating them in the published version and I have not been able to figure out why.
+
+---
+
+## Potential Future Features
+
+- Plan on trying to fix the lost `type` declaration docstrings
+- Probably plan on trying to include loose comments
+- Maybe a flag to specify output dir
+- Maybe a flag for including test files when formatting a whole dir
+- Maybe some way to indicate whether to use () for individual variable declarations and imports
 
 ---
 
@@ -175,7 +187,3 @@ type Impt struct {
 Should you use this for everything? Should you enforce it in your CI/CD pipeline? If you want to, then sure! But probably not. In fact, not all of the code inside this codebase follows the pattern used by the tool.
 
 Sometimes you might want to declare a helper function or variables only used by one function in the same file. Maybe you want to define the one method on a struct in the same file you declare it. There are various other reasons you may not want to enforce the pattern used by this tool.
-
-## Dependencies
-
-This has 0 dependencies on third-party libraries! Only libraries built into the core Go library are used.
