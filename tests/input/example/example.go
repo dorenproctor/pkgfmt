@@ -45,5 +45,10 @@ func Yzzy(s string) string {
 	return str.Replace(s, "yzzy", "", -1)
 }
 
-// loose comments
-// should loose comments go somewhere?
+// loose comments go inside comments.go
+// yes they do
+
+/*
+loose block comments go inside comments.go
+yes they do
+*/

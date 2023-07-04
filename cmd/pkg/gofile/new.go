@@ -3,7 +3,7 @@ package gofile
 import (
 	"go/parser"
 	"go/token"
-	"io/ioutil"
+	"os"
 
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
@@ -17,7 +17,7 @@ func New(filePath string) (GoFile, error) {
 		Imports:  []impt.Impt{},
 	}
 	// get body
-	fileBytes, err := ioutil.ReadFile(filePath)
+	fileBytes, err := os.ReadFile(filePath)
 	if err != nil {
 		return gf, err
 	}

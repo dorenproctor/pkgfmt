@@ -2,17 +2,17 @@ package gofile
 
 import (
 	"go/ast"
-
-	"github.com/dorenproctor/pkgfmt/cmd/pkg/pkgpart"
 )
 
 func (gf *GoFile) loadFromAst() {
-	gf.TypeSpecs = []pkgpart.PkgPart{}
 	// go/ast does not store CommentGroups on TypeSpecs for some reason
 	var lastCommentGroup *ast.CommentGroup
+	// track which comments are found inside Inspect to identify loose comments
+	isDocstring := map[*ast.CommentGroup]bool{}
 	ast.Inspect(gf.Ast, func(node ast.Node) bool {
 		switch n := node.(type) {
 		case *ast.CommentGroup:
+			isDocstring[n] = true
 			lastCommentGroup = n
 		case *ast.TypeSpec:
 			gf.addTypeSpec(n, lastCommentGroup)
@@ -26,4 +26,11 @@ func (gf *GoFile) loadFromAst() {
 		}
 		return true
 	})
+	for _, comment := range gf.Ast.Comments {
+		if !isDocstring[comment] {
+			s := gf.Body[comment.Pos()-1 : comment.End()]
+			gf.LooseComments = append(gf.LooseComments, s)
+			// gf.LooseComments = append(gf.LooseComments, "// "+comment.Text())
+		}
+	}
 }

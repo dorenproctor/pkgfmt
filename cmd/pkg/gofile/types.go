@@ -22,6 +22,8 @@ type GoFile struct {
 	Imports []impt.Impt
 	// all things declared with "type"
 	TypeSpecs []pkgpart.PkgPart
+	// comments that aren't docstrings
+	LooseComments []string
 	// abstract syntax tree for the package
 	Ast *ast.File `json:"-"`
 }

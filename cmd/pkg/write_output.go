@@ -20,5 +20,11 @@ func (p Package) WriteOutput() error {
 	if err := pkgpart.WritePkgParts(outputDir+"/vars.go", p.Name, p.Vars); err != nil {
 		return err
 	}
+	// if err := fileutils.OutputGoFile(outputDir+"/comments.go", p.Name, p.GetLooseComments(), nil); err != nil {
+	// 	return err
+	// }
+	if err := p.WriteComments(); err != nil {
+		return err
+	}
 	return nil
 }

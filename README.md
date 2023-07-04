@@ -166,7 +166,6 @@ type Impt struct {
 
 ## Known Limitations
 
-- Currently any loose comments (ie not docstrings) are lost. `go/ast` simply does not include these. I've thought of a couple ways these could be detected and added to a `comments.go` file, but this is not implemented.
 - Test files are not included when passing a dir. You can pass them individually though.
 - The `version` command does not work. In [run.sh](./scripts/run.sh) the ldflags variables are populating the variables as expected but the ldflags specified in [.goreleaser.yml](.goreleaser.yml) are not populating them in the published version and I have not been able to figure out why.
 
@@ -174,7 +173,6 @@ type Impt struct {
 
 ## Potential Future Features
 
-- Probably plan on trying to include loose comments
 - Maybe a flag to specify output dir
 - Maybe a flag for including test files when formatting a whole dir
 - Maybe some way to indicate whether to use () for individual variable declarations and imports
