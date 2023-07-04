@@ -2,7 +2,7 @@ package fileutils
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/dorenproctor/pkgfmt/cmd/pkg/impt"
@@ -11,7 +11,7 @@ import (
 // Format contents of go file and output it into filePath
 func OutputGoFile(filePath, packageName, body string, imports []impt.Impt) error {
 	s := goFileOutput(packageName, body, imports)
-	return ioutil.WriteFile(filePath, []byte(s), 0644)
+	return os.WriteFile(filePath, []byte(s), 0644)
 }
 
 func goFileOutput(packageName, body string, imports []impt.Impt) string {
