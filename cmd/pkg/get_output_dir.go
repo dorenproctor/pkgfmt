@@ -10,7 +10,7 @@ import (
 
 func (p Package) GetOutputDir() string {
 	outputDirFlag := flags.GetFlag[string]("output-dir")
-	if outputDirFlag != nil {
+	if *outputDirFlag != "" {
 		return *outputDirFlag
 	}
 	filePath := p.FilePath

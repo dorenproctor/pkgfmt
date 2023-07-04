@@ -6,6 +6,10 @@ import (
 )
 
 func SetFlags() {
+	if alreadyset {
+		return
+	}
+	alreadyset = true
 	flag.StringVar(&outputDir, "output-dir", "", "")
 	flag.StringVar(&outputDir, "o", "", "")
 	flag.BoolVar(&verbose, "verbose", false, "")
