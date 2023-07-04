@@ -8,8 +8,9 @@ import (
 	"github.com/dorenproctor/pkgfmt/cmd/pkg"
 )
 
+// run pkgfmt
 func Run() {
-	flags.SetFlags()
+	flags.ParseFlags()
 	if len(os.Args) == 1 {
 		e := fmt.Errorf("pkgfmt takes one arg, the filepath to a go file or a dir containing go files")
 		HandleError(e)
