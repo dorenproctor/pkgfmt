@@ -6,19 +6,10 @@ import (
 	str "strings"
 )
 
-var (
-	// this is not lost
-	S string
-	T = fmt.Sprintf("%s %s", "", "")
-)
-
-const Foo = "bar"
-
-// this is currently lost....
+// does foo things!
 type Fooer func(string) string
 type JustAStringMap map[string]string
 
-// this is currently lost....
 type Person struct {
 	// this is not lost
 	Name   string
@@ -27,6 +18,14 @@ type Person struct {
 	fmt.Scanner
 	Fooer
 }
+
+var (
+	// this is not lost
+	S string
+	T = fmt.Sprintf("%s %s", "", "")
+)
+
+const Foo = "bar"
 
 // shh
 func (p Person) TellSecret() string {

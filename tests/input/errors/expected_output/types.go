@@ -1,5 +1,6 @@
 package errors
 
+// errorString is a trivial implementation of error.
 type errorString struct {
 	s string
 }

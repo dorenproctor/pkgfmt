@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// does foo things!
 type Fooer func(string) string
 
 type JustAStringMap map[string]string

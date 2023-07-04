@@ -1,5 +1,6 @@
 package impt
 
+// Import
 type Impt struct {
 	// Full import path declared in import,
 	// eg "go/ast"
