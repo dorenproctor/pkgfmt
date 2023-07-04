@@ -1,11 +1,10 @@
 package flags
 
 var (
-	alreadyset bool
-	outputDir  string
-	verbose    bool
-	flags      = map[string]any{
-		"output-dir": &outputDir,
-		"verbose":    &verbose,
-	}
+	// default is <arg>/generated_pkgfmt
+	OutputDir string
+	// only used for version, print more info, default false
+	Verbose bool
+	// prevents settings flags multiple times which causes error
+	alreadySetFlags bool
 )

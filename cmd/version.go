@@ -20,7 +20,7 @@ var (
 )
 
 func printVersion() {
-	if *flags.GetFlag[bool]("verbose") {
+	if flags.Verbose {
 		fmt.Printf("Version:        %s\n", version)
 		fmt.Printf("BuildDate:      %s\n", buildDate)
 		fmt.Printf("GitCommit:      %s\n", gitCommit)

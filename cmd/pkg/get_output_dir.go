@@ -9,9 +9,8 @@ import (
 )
 
 func (p Package) GetOutputDir() string {
-	outputDirFlag := flags.GetFlag[string]("output-dir")
-	if *outputDirFlag != "" {
-		return *outputDirFlag
+	if flags.OutputDir != "" {
+		return flags.OutputDir
 	}
 	filePath := p.FilePath
 	if strings.HasSuffix(filePath, ".go") {

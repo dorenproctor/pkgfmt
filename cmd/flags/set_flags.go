@@ -6,14 +6,14 @@ import (
 )
 
 func SetFlags() {
-	if alreadyset {
+	if alreadySetFlags {
 		return
 	}
-	alreadyset = true
-	flag.StringVar(&outputDir, "output-dir", "", "")
-	flag.StringVar(&outputDir, "o", "", "")
-	flag.BoolVar(&verbose, "verbose", false, "")
-	flag.BoolVar(&verbose, "v", false, "")
+	alreadySetFlags = true
+	flag.StringVar(&OutputDir, "output-dir", "", "")
+	flag.StringVar(&OutputDir, "o", "", "")
+	flag.BoolVar(&Verbose, "verbose", false, "")
+	flag.BoolVar(&Verbose, "v", false, "")
 	// instead of flag.Parse, use the first arg as either filepath or 'version'
 	// and read flags from 2nd arg onward
 	if len(os.Args) > 2 {
